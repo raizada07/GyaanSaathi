@@ -1,11 +1,12 @@
 import React from "react";
+import logo from "./public/logo.png";
 
 function App() {
   return (
     <div className="font-sans">
       {/* Navbar */}
       <nav className="bg-white shadow-md p-4 flex justify-between items-center">
-        <h1 className="text-2xl font-bold text-blue-600">GyaanSaathi</h1>
+         <h1 className="text-2xl font-bold text-blue-600">GyaanSaathi</h1>
     <img src="/logo.png" alt="GyaanSaathi Logo" className="w-24 h-auto" />
 
         <a
