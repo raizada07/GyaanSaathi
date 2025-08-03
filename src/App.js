@@ -5,7 +5,8 @@ function App() {
   const [showForm, setShowForm] = useState(false);
   const [showTutorForm, setShowTutorForm] = useState(false);
   const [formSubmitted, setFormSubmitted] = useState(false);
-  const [selectedClass, setSelectedClass] = useState(""); // 🆕 new state
+  const [selectedClass, setSelectedClass] = useState(""); 
+  const [selectedIdProof, setSelectedIdProof] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -193,12 +194,26 @@ function App() {
       <input type="text" placeholder="Teaching Experience (in years)" className="w-full border border-gray-300 rounded-lg p-3" />
       <input type="text" placeholder="Classes You Can Teach" required className="w-full border border-gray-300 rounded-lg p-3" />
       <input type="text" placeholder="Preferred Timing" className="w-full border border-gray-300 rounded-lg p-3" />
-      <select required className="w-full border border-gray-300 rounded-lg p-3">
-        <option value="">Select ID Proof</option>
-        <option>Aadhar Card</option>
-        <option>PAN Card</option>
-        <option>Driving Licence</option>
-      </select>
+     <select
+  required
+  className="w-full border border-gray-300 rounded-lg p-3"
+  onChange={(e) => setSelectedIdProof(e.target.value)}
+>
+  <option value="">Select ID Proof</option>
+  <option>Aadhar Card</option>
+  <option>PAN Card</option>
+  <option>Driving Licence</option>
+</select>
+
+{selectedIdProof && (
+  <input
+    type="text"
+    placeholder={`Enter your ${selectedIdProof} Number`}
+    required
+    className="w-full border border-gray-300 rounded-lg p-3"
+  />
+)}
+
       <div className="text-sm text-gray-600 space-y-2">
         <label className="block">
           <input type="checkbox" required className="mr-2" />
