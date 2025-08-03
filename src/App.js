@@ -3,13 +3,30 @@ import logo from "./assets/logo.png";
 
 function App() {
   const [showForm, setShowForm] = useState(false);
+  const [formSubmitted, setFormSubmitted] = useState(false);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setFormSubmitted(true);
+
+    // 3 second baad success message hatado & form bhi band karo
+    setTimeout(() => {
+      setFormSubmitted(false);
+      setShowForm(false);
+    }, 3000);
+  };
 
   return (
     <div className="font-sans">
       {/* Navbar */}
       <nav className="bg-white shadow-md p-4 flex justify-between items-center">
-        <h1 className="text-2xl font-bold text-blue-600">GyaanSaathi</h1>
-        <img src={logo} alt="GyaanSaathi Logo" className="w-24 h-auto" />
+        {/* Left Side: Logo + Name */}
+        <div className="flex items-center gap-2">
+          <img src={logo} alt="GyaanSaathi Logo" className="w-12 h-auto" />
+          <h1 className="text-2xl font-bold text-blue-600">GyaanSaathi</h1>
+        </div>
+
+        {/* Right Side: Button */}
         <button
           onClick={() => setShowForm(true)}
           className="bg-blue-600 text-white px-4 py-2 rounded-xl hover:bg-blue-700 transition"
@@ -26,30 +43,24 @@ function App() {
         <p className="text-gray-600 mt-4 max-w-xl mx-auto">
           GyaanSaathi connects students with top tutors for classes 1–12. 100% verified & trusted.
         </p>
-        <button
-          onClick={() => setShowForm(true)}
+        <a
+          href="#demo"
           className="mt-6 inline-block bg-blue-600 text-white px-6 py-3 rounded-full hover:bg-blue-700"
+          onClick={() => setShowForm(true)}
         >
           Book Free Demo Class
-        </button>
+        </a>
       </section>
 
       {/* Services */}
       <section className="py-12 px-6">
         <h3 className="text-3xl font-bold text-center mb-8">We Provide Tutors For</h3>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 text-center">
-          {[
-            "Class 1–5",
-            "Class 6–8",
-            "Class 9–10",
-            "Class 11–12",
-            "CBSE / ICSE / State",
-            "All Subjects",
-          ].map((item) => (
+          {["Class 1–5", "Class 6–8", "Class 9–10", "Class 11–12", "CBSE / ICSE / State", "All Subjects"].map((item) => (
             <div
               key={item}
+              className="bg-white shadow-md p-6 rounded-xl border hover:shadow-xl transition cursor-pointer"
               onClick={() => setShowForm(true)}
-              className="cursor-pointer bg-white shadow-md p-6 rounded-xl border hover:shadow-xl transition"
             >
               <h4 className="text-xl font-semibold text-gray-800">{item}</h4>
             </div>
@@ -76,23 +87,25 @@ function App() {
         </div>
       </section>
 
-      {/* Form Modal - show only when button is clicked */}
+      {/* Demo Form (Visible only if showForm is true) */}
       {showForm && (
-        <div
-          className="fixed inset-0 z-50 bg-black bg-opacity-50 flex items-center justify-center p-4"
-          id="demo-form"
+        <section
+          className={`fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 px-4`}
         >
-          <div className="bg-white rounded-xl shadow-lg p-6 w-full max-w-xl md:mt-auto mt-16">
-            <button
-              onClick={() => setShowForm(false)}
-              className="text-red-500 font-bold text-right w-full mb-2"
-            >
-              ✖ Close
-            </button>
-            <h2 className="text-3xl font-bold text-center text-gray-800 mb-6">
-              Book a Free Demo Class
-            </h2>
-            <form className="space-y-4">
+          <div
+            className={`bg-white rounded-xl shadow-xl w-full max-w-xl p-6 ${
+              window.innerWidth < 768 ? "mt-0" : "mt-auto mb-10"
+            }`}
+          >
+            <h2 className="text-3xl font-bold text-center text-gray-800 mb-4">Book a Free Demo Class</h2>
+
+            {formSubmitted && (
+              <div className="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded mb-4 text-center font-semibold">
+                🎉 Congratulations! Your request has been submitted.
+              </div>
+            )}
+
+            <form className="space-y-4" onSubmit={handleSubmit}>
               <input
                 type="text"
                 placeholder="Student Name"
@@ -121,15 +134,23 @@ function App() {
                 placeholder="City"
                 className="w-full border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
               />
+
               <button
                 type="submit"
                 className="w-full bg-blue-600 text-white p-3 rounded-lg hover:bg-blue-700 transition"
               >
                 Submit Request
               </button>
+              <button
+                type="button"
+                onClick={() => setShowForm(false)}
+                className="w-full mt-2 bg-gray-300 text-gray-800 p-2 rounded-lg hover:bg-gray-400 transition"
+              >
+                Cancel
+              </button>
             </form>
           </div>
-        </div>
+        </section>
       )}
 
       {/* Footer */}
