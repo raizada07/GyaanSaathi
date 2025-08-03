@@ -7,8 +7,7 @@ function App() {
       {/* Navbar */}
       <nav className="bg-white shadow-md p-4 flex justify-between items-center">
          <h1 className="text-2xl font-bold text-blue-600">GyaanSaathi</h1>
-    <img src="./logo.png" alt="GyaanSaathi Logo" className="w-24 h-auto" />
-
+    <img src={logo} alt="GyaanSaathi Logo" className="w-24 h-auto" />
         <a
           href="#demo"
           className="bg-blue-600 text-white px-4 py-2 rounded-xl hover:bg-blue-700 transition"
