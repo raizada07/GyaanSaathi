@@ -85,61 +85,75 @@ function App() {
             )}
 
             <form className="space-y-4" onSubmit={handleSubmit}>
-              <input
-                type="text"
-                placeholder="Student Name"
-                className="w-full border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                required
-              />
+  <input
+    type="text"
+    placeholder="Student Name"
+    className="w-full border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
+    required
+  />
 
-              {/* Class Auto-filled */}
-              <input
-                type="text"
-                placeholder="Class"
-                value={selectedClass}
-                onChange={(e) => setSelectedClass(e.target.value)}
-                className="w-full border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                required
-              />
+  {/* Class Auto-filled */}
+  <input
+    type="text"
+    placeholder="Class"
+    value={selectedClass}
+    onChange={(e) => setSelectedClass(e.target.value)}
+    className="w-full border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
+    required
+  />
 
-              {/* School Name Field */}
-              <input
-                type="text"
-                placeholder="School Name"
-                className="w-full border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
-              />
+  {/* School Name Field */}
+  <input
+    type="text"
+    placeholder="School Name"
+    className="w-full border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
+  />
 
-              <input
-                type="text"
-                placeholder="Subject (e.g., Math, Science)"
-                className="w-full border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
-              />
-              <input
-                type="tel"
-                placeholder="Phone Number"
-                className="w-full border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                required
-              />
-              <input
-                type="text"
-                placeholder="City"
-                className="w-full border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
-              />
+  {/* 🆕 Board Dropdown */}
+  <select
+    required
+    className="w-full border border-gray-300 rounded-lg p-3 bg-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+  >
+    <option value="">Select Board</option>
+    <option value="MP Board">MP Board</option>
+    <option value="CBSE">CBSE</option>
+    <option value="ICSE">ICSE</option>
+    <option value="International">International</option>
+    <option value="Other">Other</option>
+  </select>
 
-              <button
-                type="submit"
-                className="w-full bg-blue-600 text-white p-3 rounded-lg hover:bg-blue-700 transition"
-              >
-                Submit Request
-              </button>
-              <button
-                type="button"
-                onClick={() => setShowForm(false)}
-                className="w-full mt-2 bg-gray-300 text-gray-800 p-2 rounded-lg hover:bg-gray-400 transition"
-              >
-                Cancel
-              </button>
-            </form>
+  <input
+    type="text"
+    placeholder="Subject (e.g., Math, Science)"
+    className="w-full border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
+  />
+  <input
+    type="tel"
+    placeholder="Phone Number"
+    className="w-full border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
+    required
+  />
+  <input
+    type="text"
+    placeholder="City"
+    className="w-full border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
+  />
+
+  <button
+    type="submit"
+    className="w-full bg-blue-600 text-white p-3 rounded-lg hover:bg-blue-700 transition"
+  >
+    Submit Request
+  </button>
+  <button
+    type="button"
+    onClick={() => setShowForm(false)}
+    className="w-full mt-2 bg-gray-300 text-gray-800 p-2 rounded-lg hover:bg-gray-400 transition"
+  >
+    Cancel
+  </button>
+</form>
+
           </div>
         </section>
       )}
