@@ -10,6 +10,7 @@ function App() {
     <img src={logo} alt="GyaanSaathi Logo" className="w-24 h-auto" />
         <a
           href="#demo"
+          onClick={() => setShowForm(true)}
           className="bg-blue-600 text-white px-4 py-2 rounded-xl hover:bg-blue-700 transition"
         >
             {/* Book Free Demo Form */}
