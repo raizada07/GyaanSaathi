@@ -4,38 +4,42 @@ import logo from "./assets/logo.png";
 function App() {
   const [showForm, setShowForm] = useState(false);
   const [formSubmitted, setFormSubmitted] = useState(false);
+  const [selectedClass, setSelectedClass] = useState(""); // 🆕 new state
 
   const handleSubmit = (e) => {
     e.preventDefault();
     setFormSubmitted(true);
 
-    // 3 second baad success message hatado & form bhi band karo
     setTimeout(() => {
       setFormSubmitted(false);
       setShowForm(false);
+      setSelectedClass(""); // Reset class after form submit
     }, 3000);
+  };
+
+  const handleBookDemo = (className = "") => {
+    setSelectedClass(className);
+    setShowForm(true);
   };
 
   return (
     <div className="font-sans">
       {/* Navbar */}
       <nav className="bg-white shadow-md p-4 flex justify-between items-center">
-        {/* Left Side: Logo + Name */}
         <div className="flex items-center gap-2">
           <img src={logo} alt="GyaanSaathi Logo" className="w-12 h-auto" />
           <h1 className="text-2xl font-bold text-blue-600">GyaanSaathi</h1>
         </div>
 
-        {/* Right Side: Button */}
         <button
-          onClick={() => setShowForm(true)}
+          onClick={() => handleBookDemo("")}
           className="bg-blue-600 text-white px-4 py-2 rounded-xl hover:bg-blue-700 transition"
         >
           Book Free Demo Class
         </button>
       </nav>
 
-      {/* Hero Section */}
+      {/* Hero */}
       <section className="text-center py-16 px-4 bg-blue-50">
         <h2 className="text-4xl font-extrabold text-gray-800">
           Find The Perfect Home Tutor for Your Child
@@ -46,7 +50,7 @@ function App() {
         <a
           href="#demo"
           className="mt-6 inline-block bg-blue-600 text-white px-6 py-3 rounded-full hover:bg-blue-700"
-          onClick={() => setShowForm(true)}
+          onClick={() => handleBookDemo("")}
         >
           Book Free Demo Class
         </a>
@@ -60,7 +64,7 @@ function App() {
             <div
               key={item}
               className="bg-white shadow-md p-6 rounded-xl border hover:shadow-xl transition cursor-pointer"
-              onClick={() => setShowForm(true)}
+              onClick={() => handleBookDemo(item)}
             >
               <h4 className="text-xl font-semibold text-gray-800">{item}</h4>
             </div>
@@ -68,35 +72,10 @@ function App() {
         </div>
       </section>
 
-      {/* How It Works */}
-      <section className="bg-gray-100 py-12 px-6" id="demo">
-        <h3 className="text-3xl font-bold text-center mb-8">How It Works</h3>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
-          <div className="p-6 bg-white rounded-xl shadow">
-            <h4 className="text-xl font-semibold mb-2">1. Book a Free Demo</h4>
-            <p className="text-gray-600">Fill a simple form or click the demo button</p>
-          </div>
-          <div className="p-6 bg-white rounded-xl shadow">
-            <h4 className="text-xl font-semibold mb-2">2. We Match a Tutor</h4>
-            <p className="text-gray-600">We find the best available tutor for your need</p>
-          </div>
-          <div className="p-6 bg-white rounded-xl shadow">
-            <h4 className="text-xl font-semibold mb-2">3. Start Your Learning</h4>
-            <p className="text-gray-600">Begin home tuitions at your convenience</p>
-          </div>
-        </div>
-      </section>
-
-      {/* Demo Form (Visible only if showForm is true) */}
+      {/* Form */}
       {showForm && (
-        <section
-          className={`fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 px-4`}
-        >
-          <div
-            className={`bg-white rounded-xl shadow-xl w-full max-w-xl p-6 ${
-              window.innerWidth < 768 ? "mt-0" : "mt-auto mb-10"
-            }`}
-          >
+        <section className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 px-4">
+          <div className={`bg-white rounded-xl shadow-xl w-full max-w-xl p-6 ${window.innerWidth < 768 ? "mt-0" : "mt-auto mb-10"}`}>
             <h2 className="text-3xl font-bold text-center text-gray-800 mb-4">Book a Free Demo Class</h2>
 
             {formSubmitted && (
@@ -112,12 +91,24 @@ function App() {
                 className="w-full border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
                 required
               />
+
+              {/* Class Auto-filled */}
               <input
                 type="text"
-                placeholder="Class (e.g., 8th, 10th)"
+                placeholder="Class"
+                value={selectedClass}
+                onChange={(e) => setSelectedClass(e.target.value)}
                 className="w-full border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
                 required
               />
+
+              {/* School Name Field */}
+              <input
+                type="text"
+                placeholder="School Name"
+                className="w-full border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              />
+
               <input
                 type="text"
                 placeholder="Subject (e.g., Math, Science)"
@@ -155,7 +146,7 @@ function App() {
 
       {/* Footer */}
       <footer className="bg-blue-600 text-white text-center py-4 mt-12">
-        <p>&copy; 2025 GyaanSaathi. All rights reserved.</p>
+        <p>&copy; 2025 GyaanSaathi Home Tutor. All rights reserved.</p>
       </footer>
     </div>
   );
