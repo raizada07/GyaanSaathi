@@ -41,7 +41,7 @@ function App() {
         </button>
           <button
               onClick={() => setShowTutorForm(true)}
-               className="bg-green-600 text-white px-4 py-2 rounded-xl hover:bg-green-700 transition ml-2"
+               className="bg-green-600 text-white px-4 py-2 rounded-xl hover:bg-green-700 transition "
                   >
                   Apply as a Tutor
           </button>
@@ -57,6 +57,13 @@ function App() {
           GyaanSaathi connects students with top tutors for classes 1–12. 100% verified & trusted.
         </p>
         <a
+          href="#demo"
+          className="mt-6 inline-block bg-blue-600 text-white px-6 py-3 rounded-full hover:bg-blue-700"
+          onClick={() => handleBookDemo("")}
+        >
+          Book Free Demo Class
+        </a>
+            <a
           href="#demo"
           className="mt-6 inline-block bg-blue-600 text-white px-6 py-3 rounded-full hover:bg-blue-700"
           onClick={() => handleBookDemo("")}
