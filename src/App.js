@@ -174,9 +174,10 @@ function App() {
         </section>
       )}
 {showTutorForm && (
-  <section className="bg-white px-4 py-8 max-w-2xl mx-auto mt-6 mb-10 overflow-y-auto shadow-lg rounded-lg">
+ <section className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 px-4">
     <h2 className="text-3xl font-bold text-center text-gray-800 mb-6">Apply as a Tutor</h2>
-    <form
+    
+  <form
       onSubmit={(e) => {
         e.preventDefault();
         alert("🎉 Congratulations! Your tutor application has been submitted.");
