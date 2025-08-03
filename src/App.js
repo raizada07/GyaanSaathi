@@ -66,9 +66,9 @@ function App() {
             <a
           href="#demo"
           className="mt-6 inline-block bg-blue-600 text-white px-6 py-3 rounded-full hover:bg-blue-700"
-          onClick={() => handleBookDemo("")}
+          onClick={() => setShowTutorForm(true)}
         >
-          Book Free Demo Class
+          Apply as a Tutor
         </a>
       </section>
 
