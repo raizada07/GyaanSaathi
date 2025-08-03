@@ -13,6 +13,48 @@ function App() {
           href="#demo"
           className="bg-blue-600 text-white px-4 py-2 rounded-xl hover:bg-blue-700 transition"
         >
+            {/* Book Free Demo Form */}
+<section className="py-12 px-4 bg-white max-w-2xl mx-auto" id="demo-form">
+  <h2 className="text-3xl font-bold text-center text-gray-800 mb-6">Book a Free Demo Class</h2>
+  <form className="space-y-4">
+    <input
+      type="text"
+      placeholder="Student Name"
+      className="w-full border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
+      required
+    />
+    <input
+      type="text"
+      placeholder="Class (e.g., 8th, 10th)"
+      className="w-full border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
+      required
+    />
+    <input
+      type="text"
+      placeholder="Subject (e.g., Math, Science)"
+      className="w-full border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
+    />
+    <input
+      type="tel"
+      placeholder="Phone Number"
+      className="w-full border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
+      required
+    />
+    <input
+      type="text"
+      placeholder="City"
+      className="w-full border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
+    />
+
+    <button
+      type="submit"
+      className="w-full bg-blue-600 text-white p-3 rounded-lg hover:bg-blue-700 transition"
+    >
+      Submit Request
+    </button>
+  </form>
+</section>
+
           Book Free Demo Class
         </a>
       </nav>
