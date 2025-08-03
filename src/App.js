@@ -161,37 +161,66 @@ function App() {
     Cancel
   </button>
 </form>
-      {showTutorForm && (
-  <section className="py-12 px-4 bg-white max-w-3xl mx-auto mt-4 rounded-xl shadow-lg">
+     
+      </div>
+        </section>
+      )}
+{showTutorForm && (
+  <section className="py-12 px-4 bg-white max-w-2xl mx-auto" id="tutor-form">
     <h2 className="text-3xl font-bold text-center text-gray-800 mb-6">Apply as a Tutor</h2>
-    <form className="space-y-4">
-      <input type="text" placeholder="Full Name" required className="input" />
-      <select required className="input">
-        <option value="">Gender</option>
+    <form
+      onSubmit={(e) => {
+        e.preventDefault();
+        alert("🎉 Congratulations! Your tutor application has been submitted.");
+        setShowTutorForm(false);
+      }}
+      className="space-y-4"
+    >
+      <input type="text" placeholder="Full Name" required className="w-full border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-green-500" />
+      
+      <select required className="w-full border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-green-500">
+        <option value="">Select Gender</option>
         <option>Male</option>
         <option>Female</option>
         <option>Other</option>
       </select>
-      <input type="date" placeholder="Date of Birth" required className="input" />
-      <input type="file" accept="image/*" className="input" />
-      <input type="tel" placeholder="Contact Number" required className="input" />
-      <input type="email" placeholder="Email ID" required className="input" />
-      <textarea placeholder="Full Address" required className="input" />
-      <input type="text" placeholder="Highest Education" required className="input" />
-      <input type="text" placeholder="Year of Passing" required className="input" />
-      <input type="text" placeholder="Teaching Experience (in years)" className="input" />
-      <input type="text" placeholder="Classes You Can Teach" required className="input" />
-      <input type="text" placeholder="Preferred Timing" className="input" />
-      <select required className="input">
+
+      <input type="date" placeholder="Date of Birth" required className="w-full border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-green-500" />
+
+      <input type="file" accept="image/*" className="w-full border border-gray-300 rounded-lg p-3" />
+
+      <input type="tel" placeholder="Contact Number" required className="w-full border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-green-500" />
+
+      <input type="email" placeholder="Email ID" required className="w-full border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-green-500" />
+
+      <textarea placeholder="Full Address" required className="w-full border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-green-500" />
+
+      <input type="text" placeholder="Highest Education" required className="w-full border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-green-500" />
+
+      <input type="text" placeholder="Year of Passing" required className="w-full border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-green-500" />
+
+      <input type="text" placeholder="Teaching Experience (in years)" className="w-full border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-green-500" />
+
+      <input type="text" placeholder="Classes You Can Teach" required className="w-full border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-green-500" />
+
+      <input type="text" placeholder="Preferred Timing" className="w-full border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-green-500" />
+
+      <select required className="w-full border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-green-500">
         <option value="">Select ID Proof</option>
         <option>Aadhar Card</option>
         <option>PAN Card</option>
         <option>Driving Licence</option>
       </select>
 
-      <div className="space-y-2 text-sm text-gray-600">
-        <label><input type="checkbox" required className="mr-2" />I confirm all the details are true</label><br />
-        <label><input type="checkbox" required className="mr-2" />I agree to follow all given guidelines</label>
+      <div className="text-sm text-gray-600 space-y-2">
+        <label className="block">
+          <input type="checkbox" required className="mr-2" />
+          I confirm all the details are true
+        </label>
+        <label className="block">
+          <input type="checkbox" required className="mr-2" />
+          I agree to follow all given guidelines
+        </label>
       </div>
 
       <button type="submit" className="w-full bg-green-600 text-white p-3 rounded-lg hover:bg-green-700 transition">
@@ -200,9 +229,7 @@ function App() {
     </form>
   </section>
 )}
-          </div>
-        </section>
-      )}
+
 
       {/* Footer */}
       <footer className="bg-blue-600 text-white text-center py-4 mt-12">
