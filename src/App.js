@@ -42,7 +42,7 @@ function App() {
       {/* Hero */}
       <section className="text-center py-16 px-4 bg-blue-50">
         <h2 className="text-4xl font-extrabold text-gray-800">
-          We provide The Best Available Tutors For Your Needs
+          We Provide The Best Available Tutors For Your Needs
         </h2>
         <p className="text-gray-600 mt-4 max-w-xl mx-auto">
           GyaanSaathi connects students with top tutors for classes 1–12. 100% verified & trusted.
