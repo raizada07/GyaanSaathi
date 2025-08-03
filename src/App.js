@@ -234,6 +234,7 @@ function App() {
         Cancel
       </button>
     </form>
+      </div>
   </section>
 )}
       {/* Footer */}
