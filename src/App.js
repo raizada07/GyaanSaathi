@@ -1,62 +1,21 @@
-import React from "react";
+import React, { useState } from "react";
 import logo from "./assets/logo.png";
 
 function App() {
+  const [showForm, setShowForm] = useState(false);
+
   return (
     <div className="font-sans">
       {/* Navbar */}
       <nav className="bg-white shadow-md p-4 flex justify-between items-center">
-         <h1 className="text-2xl font-bold text-blue-600">GyaanSaathi</h1>
-    <img src={logo} alt="GyaanSaathi Logo" className="w-24 h-auto" />
-        <a
-          href="#demo"
+        <h1 className="text-2xl font-bold text-blue-600">GyaanSaathi</h1>
+        <img src={logo} alt="GyaanSaathi Logo" className="w-24 h-auto" />
+        <button
           onClick={() => setShowForm(true)}
           className="bg-blue-600 text-white px-4 py-2 rounded-xl hover:bg-blue-700 transition"
         >
-            {/* Book Free Demo Form */}
-<section className="py-12 px-4 bg-white max-w-2xl mx-auto" id="demo-form">
-  <h2 className="text-3xl font-bold text-center text-gray-800 mb-6">Book a Free Demo Class</h2>
-  <form className="space-y-4">
-    <input
-      type="text"
-      placeholder="Student Name"
-      className="w-full border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
-      required
-    />
-    <input
-      type="text"
-      placeholder="Class (e.g., 8th, 10th)"
-      className="w-full border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
-      required
-    />
-    <input
-      type="text"
-      placeholder="Subject (e.g., Math, Science)"
-      className="w-full border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
-    />
-    <input
-      type="tel"
-      placeholder="Phone Number"
-      className="w-full border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
-      required
-    />
-    <input
-      type="text"
-      placeholder="City"
-      className="w-full border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
-    />
-
-    <button
-      type="submit"
-      className="w-full bg-blue-600 text-white p-3 rounded-lg hover:bg-blue-700 transition"
-    >
-      Submit Request
-    </button>
-  </form>
-</section>
-
           Book Free Demo Class
-        </a>
+        </button>
       </nav>
 
       {/* Hero Section */}
@@ -67,20 +26,31 @@ function App() {
         <p className="text-gray-600 mt-4 max-w-xl mx-auto">
           GyaanSaathi connects students with top tutors for classes 1–12. 100% verified & trusted.
         </p>
-        <a
-          href="#demo"
+        <button
+          onClick={() => setShowForm(true)}
           className="mt-6 inline-block bg-blue-600 text-white px-6 py-3 rounded-full hover:bg-blue-700"
         >
           Book Free Demo Class
-        </a>
+        </button>
       </section>
 
       {/* Services */}
       <section className="py-12 px-6">
         <h3 className="text-3xl font-bold text-center mb-8">We Provide Tutors For</h3>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 text-center">
-          {["Class 1–5", "Class 6–8", "Class 9–10", "Class 11–12", "CBSE / ICSE / State", "All Subjects"].map((item) => (
-            <div key={item} className="bg-white shadow-md p-6 rounded-xl border hover:shadow-xl transition">
+          {[
+            "Class 1–5",
+            "Class 6–8",
+            "Class 9–10",
+            "Class 11–12",
+            "CBSE / ICSE / State",
+            "All Subjects",
+          ].map((item) => (
+            <div
+              key={item}
+              onClick={() => setShowForm(true)}
+              className="cursor-pointer bg-white shadow-md p-6 rounded-xl border hover:shadow-xl transition"
+            >
               <h4 className="text-xl font-semibold text-gray-800">{item}</h4>
             </div>
           ))}
@@ -105,6 +75,62 @@ function App() {
           </div>
         </div>
       </section>
+
+      {/* Form Modal - show only when button is clicked */}
+      {showForm && (
+        <div
+          className="fixed inset-0 z-50 bg-black bg-opacity-50 flex items-center justify-center p-4"
+          id="demo-form"
+        >
+          <div className="bg-white rounded-xl shadow-lg p-6 w-full max-w-xl md:mt-auto mt-16">
+            <button
+              onClick={() => setShowForm(false)}
+              className="text-red-500 font-bold text-right w-full mb-2"
+            >
+              ✖ Close
+            </button>
+            <h2 className="text-3xl font-bold text-center text-gray-800 mb-6">
+              Book a Free Demo Class
+            </h2>
+            <form className="space-y-4">
+              <input
+                type="text"
+                placeholder="Student Name"
+                className="w-full border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                required
+              />
+              <input
+                type="text"
+                placeholder="Class (e.g., 8th, 10th)"
+                className="w-full border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                required
+              />
+              <input
+                type="text"
+                placeholder="Subject (e.g., Math, Science)"
+                className="w-full border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              />
+              <input
+                type="tel"
+                placeholder="Phone Number"
+                className="w-full border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                required
+              />
+              <input
+                type="text"
+                placeholder="City"
+                className="w-full border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              />
+              <button
+                type="submit"
+                className="w-full bg-blue-600 text-white p-3 rounded-lg hover:bg-blue-700 transition"
+              >
+                Submit Request
+              </button>
+            </form>
+          </div>
+        </div>
+      )}
 
       {/* Footer */}
       <footer className="bg-blue-600 text-white text-center py-4 mt-12">
