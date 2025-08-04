@@ -27,13 +27,16 @@ function App() {
   return (
     <div className="font-sans overflow-x-hidden">
       {/* Navbar */}
-<nav className="bg-white shadow-md p-4 flex justify-between items-center">
-  <div className="flex flex-col md:flex-row items-center gap-2 w-full justify-center md:justify-start">
-    <img src={logo} alt="GyaanSaathi Logo" className="w-16 sm:w-20 md:w-24 h-auto" />
-    <h1 className="text-base sm:text-lg md:text-2xl font-bold text-blue-600 text-center">
-      Welcome To GyaanSaathi Home Tutor 
-    </h1>
+    <nav className="bg-white shadow-md p-4 flex flex-col md:flex-row md:justify-between items-center md:items-center">
+  {/* Logo Left */}
+  <div className="flex justify-start w-full md:w-auto">
+    <img src={logo} alt="GyaanSaathi Logo" className="w-20 sm:w-24 md:w-32 h-auto" />
   </div>
+
+  {/* Heading Center on mobile, right on desktop */}
+  <h1 className="text-lg sm:text-xl md:text-2xl font-bold text-blue-600 text-center w-full md:w-auto mt-2 md:mt-0">
+    Welcome to GyaanSaathi Home Tutor
+  </h1>
 </nav>
 
 
@@ -88,7 +91,7 @@ function App() {
       {/* Form */}
       {showForm && (
         <section className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 px-4">
-         <div className="bg-white rounded-xl shadow-xl w-full max-w-xl p-6 mt-auto md:mb-10 md:mt-auto mt-0">
+          <div className={`bg-white rounded-xl shadow-xl w-full max-w-xl p-6 ${window.innerWidth < 768 ? "mt-0" : "mt-auto mb-10"}`}>
             <h2 className="text-3xl font-bold text-center text-gray-800 mb-4">Book a Free Demo Class</h2>
 
             {formSubmitted && (
@@ -171,7 +174,7 @@ function App() {
       )}
 {showTutorForm && (
  <section className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 px-4">
-<div className="bg-white rounded-xl shadow-xl w-full max-w-xl p-6 mt-auto md:mb-10 md:mt-auto mt-0">
+<div className={`bg-white rounded-xl shadow-xl w-full max-w-xl p-6 ${window.innerWidth < 768 ? "mt-0" : "mt-auto mb-10"}`}>
 
     <h2 className="text-3xl font-bold text-center text-gray-800 mb-6">Apply as a Tutor</h2>
     
