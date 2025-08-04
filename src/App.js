@@ -27,14 +27,18 @@ function App() {
   return (
     <div className="font-sans overflow-x-hidden">
       {/* Navbar */}
-      <nav className="bg-white shadow-md p-4 flex justify-center items-center">
-  <div className="flex items-center gap-2">
+     <nav className="bg-white shadow-md p-4 flex flex-col md:flex-row md:justify-between items-center">
+  {/* Left Side - Logo */}
+  <div className="flex items-center gap-2 mb-2 md:mb-0">
     <img src={logo} alt="GyaanSaathi Logo" className="w-20 sm:w-24 md:w-32 h-auto" />
-    <h1 className="text-center text-lg sm:text-xl md:text-2xl font-bold text-blue-600">
-      Welcome to GyaanSaathi Home Tutor
-    </h1>
   </div>
-</nav>@
+
+  {/* Center Text */}
+  <h1 className="text-lg sm:text-xl md:text-2xl font-bold text-blue-600 text-center">
+    Welcome to GyaanSaathi Home Tutor
+  </h1>
+</nav>
+
 
 
 
