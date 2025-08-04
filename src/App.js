@@ -31,7 +31,7 @@ function App() {
   <div className="flex items-center gap-2">
     <img src={logo} alt="GyaanSaathi Logo" className="w-20 sm:w-24 md:w-32 h-auto" />
     <h1 className="text-center text-lg sm:text-xl md:text-2xl font-bold text-blue-600">
-      Welcome to GyaanSaathi Home Tutor
+      Welcome To GyaanSaathi Home Tutor
     </h1>
   </div>
 </nav>
