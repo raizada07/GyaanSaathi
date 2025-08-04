@@ -33,12 +33,7 @@ function App() {
           <h1 className="text-2xl font-bold text-blue-600">GyaanSaathi</h1>
         </div>
 
-        <button
-          onClick={() => handleBookDemo("")}
-          className="bg-blue-600 text-white px-4 py-2 rounded-xl hover:bg-blue-700 transition"
-        >
-          Book Free Demo Class
-        </button>
+        
           
       </nav>
 
@@ -50,13 +45,14 @@ function App() {
         <p className="text-gray-600 mt-4 max-w-xl mx-auto">
           GyaanSaathi connects students with top tutors for classes 1–12. 100% verified & trusted.
         </p>
-        <a
-  href="#demo"
-  className="mt-6 inline-block bg-blue-600 text-white px-6 py-3 rounded-full hover:bg-blue-700"
-  onClick={() => handleBookDemo("")}
->
-  Book Free Demo Class
-</a>
+
+        <button
+          onClick={() => handleBookDemo("")}
+          className="bg-blue-600 text-white px-4 py-2 rounded-xl hover:bg-blue-700 transition"
+        >
+          Book Free Demo Class
+        </button>
+ 
 
 <div className="mt-4">
   <button
