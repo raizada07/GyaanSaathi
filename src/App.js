@@ -172,7 +172,7 @@ function App() {
       )}
 {showTutorForm && (
  <section className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 px-4 overflow-y-auto">
-<div className="bg-white rounded-xl shadow-xl w-full max-w-xl p-6 my-10">
+<div className={`bg-white rounded-xl shadow-xl w-full max-w-xl p-6 ${window.innerWidth < 768 ? "mt-0" : "mt-auto mb-10"}`}>
 
     <h2 className="text-3xl font-bold text-center text-gray-800 mb-6">Apply as a Tutor</h2>
     
