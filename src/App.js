@@ -69,9 +69,9 @@ function App() {
 
       {/* Services */}
       <section className="py-12 px-6">
-        <h3 className="text-3xl font-bold text-center mb-8">We Provide Tutors For</h3>
+        <h3 className="text-5xl font-bold text-center mb-8">We Provide Tutors For</h3>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 text-center">
-          {["Class 1–5", "Class 6–8", "Class 9–10", "Class 11–12", "CBSE / ICSE / State"].map((item) => (
+          {["Class 1–5", "Class 6–8", "Class 9–10", "Class 11–12", "JEE / NEET / CUET"].map((item) => (
             <div
               key={item}
               className="bg-white shadow-md p-6 rounded-xl border hover:shadow-xl transition cursor-pointer"
