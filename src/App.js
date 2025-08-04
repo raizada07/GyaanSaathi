@@ -129,7 +129,6 @@ function App() {
     <option value="MP Board">MP Board</option>
     <option value="CBSE">CBSE</option>
     <option value="ICSE">ICSE</option>
-    <option value="International">International</option>
     <option value="Other">Other</option>
   </select>
 
