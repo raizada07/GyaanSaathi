@@ -27,21 +27,14 @@ function App() {
   return (
     <div className="font-sans overflow-x-hidden">
       {/* Navbar */}
-    <nav className="bg-white shadow-md p-4 flex flex-col md:flex-row md:justify-between items-center md:items-center">
-  {/* Logo Left */}
-  <div className="flex justify-start w-full md:w-auto">
+    <nav className="bg-white shadow-md p-4 flex justify-center items-center">
+  <div className="flex items-center gap-2">
     <img src={logo} alt="GyaanSaathi Logo" className="w-20 sm:w-24 md:w-32 h-auto" />
+    <h1 className="text-center text-lg sm:text-xl md:text-2xl font-bold text-blue-600">
+      Welcome to GyaanSaathi Home Tutor
+    </h1>
   </div>
-
-  {/* Heading Center on mobile, right on desktop */}
-  <h1 className="text-lg sm:text-xl md:text-2xl font-bold text-blue-600 text-center w-full md:w-auto mt-2 md:mt-0">
-    Welcome to GyaanSaathi Home Tutor
-  </h1>
 </nav>
-
-
-
-
 
 
       {/* Hero */}
