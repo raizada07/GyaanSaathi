@@ -35,7 +35,7 @@ function App() {
 
   {/* Heading Center on mobile, right on desktop */}
   <h1 className="text-lg sm:text-xl md:text-2xl font-bold text-blue-600 text-center w-full md:w-auto mt-2 md:mt-0">
-    Welcome to GyaanSaathi Home Tutor
+    Welcome To GyaanSaathi Home Tutor
   </h1>
 </nav>
 
