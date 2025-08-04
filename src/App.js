@@ -34,7 +34,7 @@ function App() {
       Welcome to GyaanSaathi Home Tutor
     </h1>
   </div>
-</nav>
+</nav>@
 
 
 
