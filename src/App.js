@@ -71,7 +71,7 @@ function App() {
       <section className="py-12 px-6">
         <h3 className="text-3xl font-bold text-center mb-8">We Provide Tutors For</h3>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 text-center">
-          {["Class 1–5", "Class 6–8", "Class 9–10", "Class 11–12", "CBSE / ICSE / State", "All Subjects"].map((item) => (
+          {["Class 1–5", "Class 6–8", "Class 9–10", "Class 11–12", "CBSE / ICSE / State"].map((item) => (
             <div
               key={item}
               className="bg-white shadow-md p-6 rounded-xl border hover:shadow-xl transition cursor-pointer"
@@ -146,7 +146,7 @@ function App() {
   />
   <input
     type="text"
-    placeholder="City"
+    placeholder="Location"
     className="w-full border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
   />
 
