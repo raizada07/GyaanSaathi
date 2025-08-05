@@ -240,9 +240,25 @@ function App() {
   </section>
 )}
       {/* Footer */}
-      <footer className="bg-blue-600 text-white text-center py-4 mt-12">
-        <p>&copy; 2025 GyaanSaathi. All rights reserved.</p>
-      </footer>
+      <footer className="bg-gray-100 py-6 mt-10 shadow-inner">
+  <h2 className="text-center text-gray-800 text-lg font-bold">Connect With Us</h2>
+  <div className="flex justify-center gap-6 mt-4 text-blue-700 text-base font-medium">
+    <a href="https://www.facebook.com/gyaansaathihometutor" target="_blank" rel="noopener noreferrer" className="hover:underline">
+      📘 Facebook
+    </a>
+    <a href="https://www.instagram.com/gyaansaathihometutor" target="_blank" rel="noopener noreferrer" className="hover:underline">
+      📸 Instagram
+    </a>
+    <a href="https://wa.me/918815883226" target="_blank" rel="noopener noreferrer" className="hover:underline">
+      💬 WhatsApp
+    </a>
+    <a href="https://www.linkedin.com/in/gyaansaathihometutor" target="_blank" rel="noopener noreferrer" className="hover:underline">
+      💼 LinkedIn
+    </a>
+  </div>
+  <p className="text-center text-gray-500 mt-4 text-sm">© 2025 GyaanSaathi. All rights reserved.</p>
+</footer>
+
 
         
     </div>
