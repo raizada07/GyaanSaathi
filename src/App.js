@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import logo from "./assets/logo.png";
-import Footer from './Footer';
 
 function App() {
   const [showForm, setShowForm] = useState(false);
