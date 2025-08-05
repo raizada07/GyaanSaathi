@@ -9,16 +9,35 @@ function App() {
   const [selectedClass, setSelectedClass] = useState(""); 
   const [selectedIdProof, setSelectedIdProof] = useState("");
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    setFormSubmitted(true);
+  const handleSubmit = async (e) => {
+  e.preventDefault();
 
-    setTimeout(() => {
-      setFormSubmitted(false);
-      setShowForm(false);
-      setSelectedClass(""); // Reset class after form submit
-    }, 3000);
+  const data = {
+    name: studentName,
+    studentClass: studentClass,
+    subject: subject,
+    phone: phone,
+    city: city,
+    school: schoolName,
+    board: boardName,
   };
+
+  try {
+    await fetch("https://script.google.com/macros/s/AKfycbxTZ33Lh44TKIQk8mqBL-_2oXXeNI4xkv1BPpj8ICksDvQyBz6qSulGskK3co0zGFWG/exec", {
+      method: "POST",
+      body: JSON.stringify(data),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+
+    alert("✅ Demo request submitted successfully!");
+  } catch (err) {
+    alert("❌ Error submitting form. Please try again.");
+    console.error(err);
+  }
+};
+
 
   const handleBookDemo = (className = "") => {
     setSelectedClass(className);
