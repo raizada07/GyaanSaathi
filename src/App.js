@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import logo from "./assets/logo.png";
+import Footer from './Footer';
 
 function App() {
   const [showForm, setShowForm] = useState(false);
@@ -239,9 +240,8 @@ function App() {
   </section>
 )}
       {/* Footer */}
-      <footer className="bg-blue-600 text-white text-center py-4 mt-12">
-        <p>&copy; 2025 GyaanSaathi. All rights reserved.</p>
-      </footer>
+      <Footer />
+        
     </div>
   );
 }
