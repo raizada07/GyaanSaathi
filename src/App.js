@@ -9,35 +9,16 @@ function App() {
   const [selectedClass, setSelectedClass] = useState(""); 
   const [selectedIdProof, setSelectedIdProof] = useState("");
 
-  const handleSubmit = async (e) => {
-  e.preventDefault();
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setFormSubmitted(true);
 
-  const data = {
-    name: studentName,
-    studentClass: studentClass,
-    subject: subject,
-    phone: phone,
-    city: city,
-    school: schoolName,
-    board: boardName,
+    setTimeout(() => {
+      setFormSubmitted(false);
+      setShowForm(false);
+      setSelectedClass(""); // Reset class after form submit
+    }, 3000);
   };
-
-  try {
-    await fetch("https://script.google.com/macros/s/AKfycbxTZ33Lh44TKIQk8mqBL-_2oXXeNI4xkv1BPpj8ICksDvQyBz6qSulGskK3co0zGFWG/exec", {
-      method: "POST",
-      body: JSON.stringify(data),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
-
-    alert("✅ Demo request submitted successfully!");
-  } catch (err) {
-    alert("❌ Error submitting form. Please try again.");
-    console.error(err);
-  }
-};
-
 
   const handleBookDemo = (className = "") => {
     setSelectedClass(className);
@@ -189,7 +170,7 @@ function App() {
       )}
 {showTutorForm && (
  <section className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 px-4">
-<div className={`bg-white rounded-xl shadow-xl w-full max-w-xl p-6 "mt-0" : "mt-auto mb-10"`}>
+<div className={bg-white rounded-xl shadow-xl w-full max-w-xl p-6 "mt-0" : "mt-auto mb-10"}>
 
     <h2 className="text-3xl font-bold text-center text-gray-800 mb-6">Apply as a Tutor</h2>
     
@@ -232,7 +213,7 @@ function App() {
 {selectedIdProof && (
   <input
     type="text"
-    placeholder={`Enter your ${selectedIdProof} Number`}
+    placeholder={Enter your ${selectedIdProof} Number}
     required
     className="w-full border border-gray-300 rounded-lg p-3"
   />
