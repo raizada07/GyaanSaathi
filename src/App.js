@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import logo from "./assets/logo.png";
-import { FaFacebook, FaInstagram, FaWhatsapp, FaLinkedin } from "react-icons/fa";
 
 
 function App() {
