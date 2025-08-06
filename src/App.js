@@ -5,13 +5,21 @@ import logo from "./assets/logo.png";
 function App() {
   const [showForm, setShowForm] = useState(false);
   const [showTutorForm, setShowTutorForm] = useState(false);
-  const [formSubmitted, setFormSubmitted] = useState(false);
+  
   const [selectedClass, setSelectedClass] = useState(""); 
   const [selectedIdProof, setSelectedIdProof] = useState("");
+  const [studentName, setStudentName] = useState("");
+const [studentName, setStudentName] = useState("");
+const [studentClass, setStudentClass] = useState("");
+const [subject, setSubject] = useState("");
+const [phone, setPhone] = useState("");
+const [city, setCity] = useState("");
+const [schoolName, setSchoolName] = useState("");
+const [boardName, setBoardName] = useState("");
+const [formSubmitted, setFormSubmitted] = useState(false);
 
-  const handleSubmit = async (e) => {
+ const handleSubmit = async (e) => {
   e.preventDefault();
-
   const data = {
     name: studentName,
     studentClass: studentClass,
@@ -23,18 +31,31 @@ function App() {
   };
 
   try {
-    await fetch("https://script.google.com/macros/s/AKfycbyymr-xqH2i_6MqkgQHR6cAmfUg_4av3nd-UIu9cLHHVdkyGiznpZb3aNvDhMpnlGV7eQ/exec", {
-      method: "POST",
-      body: JSON.stringify(data),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
-
-    alert("✅ Demo request submitted successfully!");
-  } catch (err) {
-    alert("❌ Error submitting form. Please try again.");
-    console.error(err);
+    const response = await fetch(
+      "https://https://script.google.com/macros/s/AKfycbyymr-xqH2i_6MqkgQHR6cAmfUg_4av3nd-UIu9cLHHVdkyGiznpZb3aNvDhMpnlGV7eQ/exec, // replace with your actual URL
+      {
+        method: "POST",
+        body: JSON.stringify(data),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
+    if (response.ok) {
+      setStudentName("");
+      setStudentClass("");
+      setSubject("");
+      setPhone("");
+      setCity("");
+      setSchoolName("");
+      setBoardName("");
+      setFormSubmitted(true);
+    } else {
+      alert("Failed to submit. Try again.");
+    }
+  } catch (error) {
+    console.error("Error submitting form:", error);
+    alert("Error occurred. Try again.");
   }
 };
 
@@ -114,73 +135,106 @@ function App() {
               </div>
             )}
 
-            <form className="space-y-4" onSubmit={handleSubmit}>
+           <form
+  onSubmit={handleSubmit}
+  className="bg-white p-6 rounded-lg shadow-lg w-full max-w-xl mx-auto mt-6 space-y-4"
+>
+  {/* Student Name */}
   <input
     type="text"
     placeholder="Student Name"
+    value={studentName}
+    onChange={(e) => setStudentName(e.target.value)}
     className="w-full border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
     required
   />
 
-  {/* Class Auto-filled */}
+  {/* Student Class (Buttons) */}
+  <div className="flex flex-wrap gap-2">
+    {["1-5", "6-8", "9-10", "11-12"].map((cls) => (
+      <button
+        type="button"
+        key={cls}
+        onClick={() => setStudentClass(cls)}
+        className={`px-4 py-2 rounded-lg border ${
+          studentClass === cls
+            ? "bg-blue-600 text-white"
+            : "bg-white text-gray-700"
+        }`}
+      >
+        {cls}
+      </button>
+    ))}
+  </div>
+
+  {/* Subject */}
   <input
     type="text"
-    placeholder="Class"
-    value={selectedClass}
-    onChange={(e) => setSelectedClass(e.target.value)}
+    placeholder="Subject"
+    value={subject}
+    onChange={(e) => setSubject(e.target.value)}
     className="w-full border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
     required
   />
 
-  {/* School Name Field */}
+  {/* Phone Number */}
+  <input
+    type="tel"
+    placeholder="Phone Number"
+    value={phone}
+    onChange={(e) => setPhone(e.target.value)}
+    className="w-full border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
+    required
+  />
+
+  {/* City */}
+  <input
+    type="text"
+    placeholder="City"
+    value={city}
+    onChange={(e) => setCity(e.target.value)}
+    className="w-full border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
+    required
+  />
+
+  {/* School Name */}
   <input
     type="text"
     placeholder="School Name"
+    value={schoolName}
+    onChange={(e) => setSchoolName(e.target.value)}
     className="w-full border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
   />
 
-  {/* 🆕 Board Dropdown */}
+  {/* Board Name Dropdown */}
   <select
-    required
+    value={boardName}
+    onChange={(e) => setBoardName(e.target.value)}
     className="w-full border border-gray-300 rounded-lg p-3 bg-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+    required
   >
     <option value="">Select Board</option>
     <option value="MP Board">MP Board</option>
     <option value="CBSE">CBSE</option>
     <option value="ICSE">ICSE</option>
+    <option value="International">International</option>
     <option value="Other">Other</option>
   </select>
 
-  <input
-    type="text"
-    placeholder="Subject (e.g., Math, Science)"
-    className="w-full border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
-  />
-  <input
-    type="tel"
-    placeholder="Phone Number"
-    className="w-full border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
-    required
-  />
-  <input
-    type="text"
-    placeholder="Location"
-    className="w-full border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
-  />
-
+  {/* Submit Button */}
   <button
     type="submit"
-    className="w-full bg-blue-600 text-white p-3 rounded-lg hover:bg-blue-700 transition"
+    className="w-full bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700 transition"
   >
-    Submit Request
+    Submit
   </button>
-  <button
-    type="button"
-    onClick={() => setShowForm(false)}
-    className="w-full mt-2 bg-gray-300 text-gray-800 p-2 rounded-lg hover:bg-gray-400 transition"
-  >
-    Cancel
-  </button>
+
+  {/* Success Message */}
+  {formSubmitted && (
+    <p className="text-green-600 font-semibold text-center">
+      🎉 Thank you! Your demo class request has been submitted.
+    </p>
+  )}
 </form>
      
       </div>
