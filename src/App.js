@@ -227,6 +227,9 @@ const [formSubmitted, setFormSubmitted] = useState(false);
   >
     Submit
   </button>
+ <button type="button" onClick={() => setShowTutorForm(false)} className="w-full mt-2 bg-gray-300 text-gray-800 p-2 rounded-lg hover:bg-gray-400 transition">
+        Cancel
+  </button>
 
   {/* Success Message */}
   {formSubmitted && (
