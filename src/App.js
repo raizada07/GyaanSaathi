@@ -13,7 +13,7 @@ const [studentName, setStudentName] = useState("");
 const [studentClass, setStudentClass] = useState("");
 const [subject, setSubject] = useState("");
 const [phone, setPhone] = useState("");
-const [city, setCity] = useState("");
+const [Location, setLoction] = useState("");
 const [schoolName, setSchoolName] = useState("");
 const [boardName, setBoardName] = useState("");
 const [formSubmitted, setFormSubmitted] = useState(false);
@@ -25,7 +25,7 @@ const [formSubmitted, setFormSubmitted] = useState(false);
     studentClass: studentClass,
     subject: subject,
     phone: phone,
-    city: city,
+    Location: Location,
     school: schoolName,
     board: boardName,
   };
@@ -47,7 +47,7 @@ const [formSubmitted, setFormSubmitted] = useState(false);
       setStudentClass("");
       setSubject("");
       setPhone("");
-      setCity("");
+      setLocation("");
       setSchoolName("");
       setBoardName("");
       setFormSubmitted(true);
@@ -191,9 +191,9 @@ const [formSubmitted, setFormSubmitted] = useState(false);
   {/* City */}
   <input
     type="text"
-    placeholder="City"
+    placeholder="Location"
     value={city}
-    onChange={(e) => setCity(e.target.value)}
+    onChange={(e) => setLocation(e.target.value)}
     className="w-full border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
     required
   />
@@ -218,7 +218,6 @@ const [formSubmitted, setFormSubmitted] = useState(false);
     <option value="MP Board">MP Board</option>
     <option value="CBSE">CBSE</option>
     <option value="ICSE">ICSE</option>
-    <option value="International">International</option>
     <option value="Other">Other</option>
   </select>
 
