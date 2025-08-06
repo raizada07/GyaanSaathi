@@ -31,7 +31,7 @@ const [formSubmitted, setFormSubmitted] = useState(false);
   };
 
  try {
-  const response = await fetch("https://script.google.com/macros/s/AKfycbxsQ8aTS3t03iBYMObkO6KRaRYy9FJqazKsJx3hl5PeZ8zjowCYSWW7kkk8z3f5wpgu/exec", {
+  const response = await fetch("https://script.google.com/macros/s/AKfycbyE6VK2WNmcmAf11jBs9ogo3E73Yp5PbCcmhiGj2TgceC68f0S9oQdc36hx0rSyr_Ag/exec", {
   method: "POST",
   body: JSON.stringify(data),
   headers: {
