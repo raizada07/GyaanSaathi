@@ -8,7 +8,7 @@ function App() {
   
   const [selectedClass, setSelectedClass] = useState(""); 
   const [selectedIdProof, setSelectedIdProof] = useState("");
-  const [studentName, setStudentName] = useState("");
+ 
 const [studentName, setStudentName] = useState("");
 const [studentClass, setStudentClass] = useState("");
 const [subject, setSubject] = useState("");
