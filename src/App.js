@@ -30,17 +30,18 @@ const [formSubmitted, setFormSubmitted] = useState(false);
     board: boardName,
   };
 
-  try {
-    const response = await fetch(
-      "https://script.google.com/macros/s/AKfycbyymr-xqH2i_6MqkgQHR6cAmfUg_4av3nd-UIu9cLHHVdkyGiznpZb3aNvDhMpnlGV7eQ/exec," // replace with your actual URL
-      {
-        method: "POST",
-        body: JSON.stringify(data),
-        headers: {
-          "Content-Type": "application/json",
-        },
-      }
-    );
+ try {
+  const response = await fetch(
+    "https://script.google.com/macros/s/AKfycbyymr-xqH2i_6MqkgQHR6cAmfUg_4av3nd-UIu9cLHHVdkyGiznpZb3aNvDhMpnlGV7eQ/exec", // ✅ correct URL
+    {
+      method: "POST",
+      body: JSON.stringify(data),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    }
+  );
+
     if (response.ok) {
       setStudentName("");
       setStudentClass("");
