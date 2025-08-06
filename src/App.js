@@ -32,7 +32,7 @@ const [formSubmitted, setFormSubmitted] = useState(false);
 
  try {
   const response = await fetch(
-    "https://script.google.com/macros/s/AKfycbyymr-xqH2i_6MqkgQHR6cAmfUg_4av3nd-UIu9cLHHVdkyGiznpZb3aNvDhMpnlGV7eQ/exec", // ✅ correct URL
+    "https://script.google.com/macros/s/AKfycbzp_EXJoPFBf1_nwGHKVHP8x-f3iOCL_1SIaE3PgGZ5-Bs0sZJxoKovfr_MBcmPopc9/exec", // ✅ correct URL
     {
       method: "POST",
       body: JSON.stringify(data),
