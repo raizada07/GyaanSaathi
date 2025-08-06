@@ -31,16 +31,14 @@ const [formSubmitted, setFormSubmitted] = useState(false);
   };
 
  try {
-  const response = await fetch(
-    "https://script.google.com/macros/s/AKfycbzp_EXJoPFBf1_nwGHKVHP8x-f3iOCL_1SIaE3PgGZ5-Bs0sZJxoKovfr_MBcmPopc9/exec", // ✅ correct URL
-    {
-      method: "POST",
-      body: JSON.stringify(data),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    }
-  );
+  const response = await fetch("https://script.google.com/macros/s/AKfycbzp_EXJoPFBf1_nwGHKVHP8x-f3iOCL_1SIaE3PgGZ5-Bs0sZJxoKovfr_MBcmPopc9/exec", {
+  method: "POST",
+  body: JSON.stringify(data),
+  headers: {
+    "Content-Type": "application/json",
+  },
+});
+
 
     if (response.ok) {
       setStudentName("");
