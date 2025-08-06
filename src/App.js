@@ -24,7 +24,7 @@
  <section className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 px-4">
 <div className={`bg-white rounded-xl shadow-xl w-full max-w-xl p-6 "mt-0" : "mt-auto mb-10"`}>
 
-    <h2 className="text-3xl font-bold text-center text-gray-800 mb-6">Apply as a Tutor</h2>
+    <h2 className="text-3xl font-bold ext-center text-gray-800 mb-6">Apply as a Tutor</h2>
     
   <form
       onSubmit={(e) => {
