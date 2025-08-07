@@ -3,7 +3,7 @@ import logo from "./assets/logo.png";
 import { initializeApp } from "firebase/app";
 import { getDatabase, push, ref } from "firebase/database";
 
-// Replace with your Firebase config
+// Firebase config
 const firebaseConfig = {
   apiKey: "AIzaSyDpfYQ6Wma6c9B7NtWu-coUEj45IMLfi3A",
   authDomain: "gyaansaathi-backend.firebaseapp.com",
@@ -18,7 +18,6 @@ const firebaseConfig = {
 const firebaseApp = initializeApp(firebaseConfig);
 const database = getDatabase(firebaseApp);
 
-
 function App() {
   const [showForm, setShowForm] = useState(false);
   const [showTutorForm, setShowTutorForm] = useState(false);
@@ -26,58 +25,62 @@ function App() {
   const [selectedClass, setSelectedClass] = useState(""); 
   const [selectedIdProof, setSelectedIdProof] = useState("");
  
-const [studentName, setStudentName] = useState("");
-const [studentClass, setStudentClass] = useState("");
-const [subject, setSubject] = useState("");
-const [phone, setPhone] = useState("");
-const [city, setCity] = useState("");
-const [schoolName, setSchoolName] = useState("");
-const [boardName, setBoardName] = useState("");
-const [formSubmitted, setFormSubmitted] = useState(false);
-
-    }
-   catch (error) {
-    console.error("Error submitting form:", error);
-    alert("Error occurred. Try again.");
-  }
-};
+  const [studentName, setStudentName] = useState("");
+  const [studentClass, setStudentClass] = useState("");
+  const [subject, setSubject] = useState("");
+  const [phone, setPhone] = useState("");
+  const [city, setCity] = useState("");
+  const [schoolName, setSchoolName] = useState("");
+  const [boardName, setBoardName] = useState("");
+  const [formSubmitted, setFormSubmitted] = useState(false);
 
   const handleBookDemo = (className = "") => {
     setSelectedClass(className);
     setShowForm(true);
   };
+
   const handleSubmit = async (e) => {
-  e.preventDefault(); // page reload na ho
+    e.preventDefault(); // page reload na ho
 
-  try {
-    const demoRef = ref(database, "demoRequests"); // Firebase path
+    try {
+      const demoRef = ref(database, "demoRequests"); // Firebase path
 
-    await push(demoRef, {
-      name: studentName,
-      class: studentClass,
-      subject,
-      phone,
-      city,
-      school: schoolName,
-      board: boardName,
-      timestamp: new Date().toISOString(),
-    });
+      await push(demoRef, {
+        name: studentName,
+        class: studentClass,
+        subject,
+        phone,
+        city,
+        school: schoolName,
+        board: boardName,
+        timestamp: new Date().toISOString(),
+      });
 
-    // Form reset kar do
-    setStudentName("");
-    setStudentClass("");
-    setSubject("");
-    setPhone("");
-    setCity("");
-    setSchoolName("");
-    setBoardName("");
-    setFormSubmitted(true); // message show karne ke liye
+      // Form reset
+      setStudentName("");
+      setStudentClass("");
+      setSubject("");
+      setPhone("");
+      setCity("");
+      setSchoolName("");
+      setBoardName("");
+      setFormSubmitted(true);
 
-  } catch (error) {
-    console.error("Error submitting form:", error);
-    alert("Kuch galat ho gaya, dubara try karo.");
-  }
-};
+    } catch (error) {
+      console.error("Error submitting form:", error);
+      alert("Kuch galat ho gaya, dubara try karo.");
+    }
+  };
+
+  // 👇 Yahan pe return hona chahiye, jisme UI render karte ho
+  return (
+    <div>
+      {/* UI yahan hoga */}
+    </div>
+  );
+}
+
+
 
 
   return (
