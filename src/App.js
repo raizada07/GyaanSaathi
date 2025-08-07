@@ -78,9 +78,6 @@ function App() {
       {/* UI yahan hoga */}
     </div>
   );
-}
-
-
 
 
   return (
