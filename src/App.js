@@ -1,5 +1,22 @@
 import React, { useState } from "react";
 import logo from "./assets/logo.png";
+import { initializeApp } from "firebase/app";
+import { getDatabase, push, ref } from "firebase/database";
+
+// Replace with your Firebase config
+const firebaseConfig = {
+  apiKey: "AIzaSyDpfYQ6Wma6c9B7NtWu-coUEj45IMLfi3A",
+  authDomain: "gyaansaathi-backend.firebaseapp.com",
+  databaseURL: "https://gyaansaathi-backend-default-rtdb.firebaseio.com",
+  projectId: "gyaansaathi-backend",
+  storageBucket: "gyaansaathi-backend.appspot.com", 
+  messagingSenderId: "896654402107",
+  appId: "1:896654402107:web:20d52a70b5ba762c22321e",
+  measurementId: "G-GZ3Y9YMNBY"
+};
+
+const firebaseApp = initializeApp(firebaseConfig);
+const database = getDatabase(firebaseApp);
 
 
 function App() {
@@ -18,41 +35,8 @@ const [schoolName, setSchoolName] = useState("");
 const [boardName, setBoardName] = useState("");
 const [formSubmitted, setFormSubmitted] = useState(false);
 
- const handleSubmit = async (e) => {
-  e.preventDefault();
-  const data = {
-    name: studentName,
-    studentClass: studentClass,
-    subject: subject,
-    phone: phone,
-    city: city,
-    school: schoolName,
-    board: boardName,
-  };
-
- try {
-  const response = await fetch("https://script.google.com/macros/s/AKfycbx7udldf7St4ysQtMcg0ZnnmlFQWG0facvmhm98nWy_TP9ot2EwPUbxuM0j9t_BdrUA/exec", {
-  method: "POST",
-  body: JSON.stringify(data),
-  headers: {
-    "Content-Type": "application/json",
-  },
-});
-
-
-    if (response.ok) {
-      setStudentName("");
-      setStudentClass("");
-      setSubject("");
-      setPhone("");
-      setCity("");
-      setSchoolName("");
-      setBoardName("");
-      setFormSubmitted(true);
-    } else {
-      alert("Failed to submit. Try again.");
     }
-  } catch (error) {
+   catch (error) {
     console.error("Error submitting form:", error);
     alert("Error occurred. Try again.");
   }
@@ -62,6 +46,39 @@ const [formSubmitted, setFormSubmitted] = useState(false);
     setSelectedClass(className);
     setShowForm(true);
   };
+  const handleSubmit = async (e) => {
+  e.preventDefault(); // page reload na ho
+
+  try {
+    const demoRef = ref(database, "demoRequests"); // Firebase path
+
+    await push(demoRef, {
+      name: studentName,
+      class: studentClass,
+      subject,
+      phone,
+      city,
+      school: schoolName,
+      board: boardName,
+      timestamp: new Date().toISOString(),
+    });
+
+    // Form reset kar do
+    setStudentName("");
+    setStudentClass("");
+    setSubject("");
+    setPhone("");
+    setCity("");
+    setSchoolName("");
+    setBoardName("");
+    setFormSubmitted(true); // message show karne ke liye
+
+  } catch (error) {
+    console.error("Error submitting form:", error);
+    alert("Kuch galat ho gaya, dubara try karo.");
+  }
+};
+
 
   return (
     <div className="font-sans overflow-x-hidden">
