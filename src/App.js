@@ -1,22 +1,6 @@
 import React, { useState } from "react";
 import logo from "./assets/logo.png";
-import { initializeApp } from "firebase/app";
-import { getDatabase, push, ref } from "firebase/database";
 
-// Firebase config
-const firebaseConfig = {
-  apiKey: "AIzaSyDpfYQ6Wma6c9B7NtWu-coUEj45IMLfi3A",
-  authDomain: "gyaansaathi-backend.firebaseapp.com",
-  databaseURL: "https://gyaansaathi-backend-default-rtdb.firebaseio.com",
-  projectId: "gyaansaathi-backend",
-  storageBucket: "gyaansaathi-backend.appspot.com", 
-  messagingSenderId: "896654402107",
-  appId: "1:896654402107:web:20d52a70b5ba762c22321e",
-  measurementId: "G-GZ3Y9YMNBY"
-};
-
-const firebaseApp = initializeApp(firebaseConfig);
-const database = getDatabase(firebaseApp);
 
 function App() {
   const [showForm, setShowForm] = useState(false);
@@ -25,38 +9,38 @@ function App() {
   const [selectedClass, setSelectedClass] = useState(""); 
   const [selectedIdProof, setSelectedIdProof] = useState("");
  
-  const [studentName, setStudentName] = useState("");
-  const [studentClass, setStudentClass] = useState("");
-  const [subject, setSubject] = useState("");
-  const [phone, setPhone] = useState("");
-  const [city, setCity] = useState("");
-  const [schoolName, setSchoolName] = useState("");
-  const [boardName, setBoardName] = useState("");
-  const [formSubmitted, setFormSubmitted] = useState(false);
+const [studentName, setStudentName] = useState("");
+const [studentClass, setStudentClass] = useState("");
+const [subject, setSubject] = useState("");
+const [phone, setPhone] = useState("");
+const [city, setCity] = useState("");
+const [schoolName, setSchoolName] = useState("");
+const [boardName, setBoardName] = useState("");
+const [formSubmitted, setFormSubmitted] = useState(false);
 
-  const handleBookDemo = (className = "") => {
-    setSelectedClass(className);
-    setShowForm(true);
+ const handleSubmit = async (e) => {
+  e.preventDefault();
+  const data = {
+    name: studentName,
+    studentClass: studentClass,
+    subject: subject,
+    phone: phone,
+    city: city,
+    school: schoolName,
+    board: boardName,
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault(); // page reload na ho
+ try {
+  const response = await fetch("https://script.google.com/macros/s/AKfycbyE6VK2WNmcmAf11jBs9ogo3E73Yp5PbCcmhiGj2TgceC68f0S9oQdc36hx0rSyr_Ag/exec", {
+  method: "POST",
+  body: JSON.stringify(data),
+  headers: {
+    "Content-Type": "application/json",
+  },
+});
 
-    try {
-      const demoRef = ref(database, "demoRequests"); // Firebase path
 
-      await push(demoRef, {
-        name: studentName,
-        class: studentClass,
-        subject,
-        phone,
-        city,
-        school: schoolName,
-        board: boardName,
-        timestamp: new Date().toISOString(),
-      });
-
-      // Form reset
+    if (response.ok) {
       setStudentName("");
       setStudentClass("");
       setSubject("");
@@ -65,20 +49,19 @@ function App() {
       setSchoolName("");
       setBoardName("");
       setFormSubmitted(true);
-
-    } catch (error) {
-      console.error("Error submitting form:", error);
-      alert("Kuch galat ho gaya, dubara try karo.");
+    } else {
+      alert("Failed to submit. Try again.");
     }
+  } catch (error) {
+    console.error("Error submitting form:", error);
+    alert("Error occurred. Try again.");
+  }
+};
+
+  const handleBookDemo = (className = "") => {
+    setSelectedClass(className);
+    setShowForm(true);
   };
-
-  // 👇 Yahan pe return hona chahiye, jisme UI render karte ho
-  return (
-    <div>
-      {/* UI yahan hoga */}
-    </div>
-  );
-
 
   return (
     <div className="font-sans overflow-x-hidden">
