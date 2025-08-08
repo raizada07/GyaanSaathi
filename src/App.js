@@ -326,6 +326,9 @@ const [formSubmitted, setFormSubmitted] = useState(false);
     <a href="https://wa.me/918815883226" target="_blank" rel="noopener noreferrer" className="hover:underline">
       💬 WhatsApp
     </a>
+    <a href="https://wa.me/917897344923" target="_blank" rel="noopener noreferrer" className="hover:underline">
+      💬 WhatsApp
+    </a>
     <a href="https://www.linkedin.com/in/gyaansaathihometutor" target="_blank" rel="noopener noreferrer" className="hover:underline">
       💼 LinkedIn
     </a>
