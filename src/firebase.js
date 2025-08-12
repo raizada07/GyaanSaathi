@@ -1,5 +1,6 @@
 import { initializeApp } from "firebase/app";
 import { getDatabase, ref, push } from "firebase/database";
+import { getStorage } from "firebase/storage"; // <-- Add this line
 
 // Paste your config here
 const firebaseConfig = {
@@ -12,7 +13,9 @@ const firebaseConfig = {
   appId: "1:896654402107:web:20d52a70b5ba762c22321e",
   measurementId: "G-GZ3Y9YMNBY"
 };
+
 const app = initializeApp(firebaseConfig);
 const db = getDatabase(app);
+const storage = getStorage(app); // <-- Create storage instance
 
-export { db, ref, push };
+export { db, ref, push, storage }; // <-- Export storage too
