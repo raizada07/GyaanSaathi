@@ -1,6 +1,6 @@
 import { initializeApp } from "firebase/app";
 import { getDatabase, ref, push } from "firebase/database";
-import { getStorage } from "firebase/storage"; // <-- Add this line
+import { getStorage } from "firebase/storage"; // storage import
 
 // Paste your config here
 const firebaseConfig = {
@@ -16,6 +16,6 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 const db = getDatabase(app);
-const storage = getStorage(app); // <-- Create storage instance
+const storage = getStorage(app); // storage initialize
 
-export { db, ref, push, storage }; // <-- Export storage too
+export { db, ref, push, storage }; // storage export bhi kar do
