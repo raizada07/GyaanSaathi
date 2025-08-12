@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import logo from "./assets/logo.png";
 
 // firebase
-import { db, storage } from "./firebase";
+import { storage } from './firebase';
 import { collection, addDoc, serverTimestamp } from "firebase/firestore";
 import { ref as storageRef, uploadBytes, getDownloadURL } from "firebase/storage";
 
