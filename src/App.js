@@ -30,7 +30,7 @@ function App() {
     };
 
     try {
-      const response = await fetch("https://script.google.com/macros/s/AKfycbyE6VK2WNmcmAf11jBs9ogo3E73Yp5PbCcmhiGj2TgceC68f0S9oQdc36hx0rSyr_Ag/exec", {
+      const response = await fetch("https://script.google.com/macros/s/AKfycbzKi8377k6eOfyn3lRr4i-fmV-zVLxCRr6p2txlhAOE-C1cAhFDCKM5plnC3sljS1Bv/exec", {
         method: "POST",
         body: JSON.stringify(data),
         headers: {
