@@ -182,7 +182,7 @@ const handleTutorSubmit = async (e) => {
               <input type="text" placeholder="Student Name" value={studentName} onChange={(e) => setStudentName(e.target.value)} className="w-full border p-3 rounded-lg" required />
 
               <div className="flex flex-wrap gap-2">
-                {["1-5", "6-8", "9-10", "11-12"].map((cls) => (
+                {["1-5", "6-8", "9-10", "11-12", "JEE / NEET / CUET"].map((cls) => (
                   <button
                     type="button"
                     key={cls}
