@@ -58,6 +58,7 @@ try {
   console.error("Error submitting form:", error);
   alert("Error occurred. Try again.");
 }
+  };
   const handleBookDemo = (className = "") => {
     setSelectedClass(className);
     setShowForm(true);
