@@ -29,33 +29,35 @@ function App() {
       board: boardName,
     };
 
-    try {
-      const response = await fetch("https://script.google.com/macros/s/AKfycbzKi8377k6eOfyn3lRr4i-fmV-zVLxCRr6p2txlhAOE-C1cAhFDCKM5plnC3sljS1Bv/exec", {
-        method: "POST",
-        body: JSON.stringify(data),
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
+try {
+  const response = await fetch("https://script.google.com/macros/s/AKfycbyoW6WK3RYllFYmOHpxjIqhN8Pif_4aS_cqs2YqlD5vnL1VW-iaHLbQtKqBvyEXDrRa/exec", {
+    method: "POST",
+    mode: "cors",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(data),
+  });
 
-      if (response.ok) {
-        setStudentName("");
-        setStudentClass("");
-        setSubject("");
-        setPhone("");
-        setCity("");
-        setSchoolName("");
-        setBoardName("");
-        setFormSubmitted(true);
-      } else {
-        alert("Failed to submit. Try again.");
-      }
-    } catch (error) {
-      console.error("Error submitting form:", error);
-      alert("Error occurred. Try again.");
-    }
-  };
+  if (response.ok) {
+    // Clear all fields after successful submission
+    setStudentName("");
+    setStudentClass("");
+    setSubject("");
+    setPhone("");
+    setCity("");
+    setSchoolName("");
+    setBoardName("");
+    setFormSubmitted(true);
 
+    alert("Form submitted successfully ✅");
+  } else {
+    alert("Failed to submit. Try again.");
+  }
+} catch (error) {
+  console.error("Error submitting form:", error);
+  alert("Error occurred. Try again.");
+}
   const handleBookDemo = (className = "") => {
     setSelectedClass(className);
     setShowForm(true);
