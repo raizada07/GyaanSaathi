@@ -20,26 +20,43 @@ const [boardName, setBoardName] = useState("");
   const handleSubmit = async (e) => {
   e.preventDefault();
 
-  const formData = {
-    studentName,
-    studentClass,
-    subject,
-    phone,
-    city,
-    schoolName,
-    boardName
-  };
+ await fetch("https://script.google.com/macros/s/AKfycbyoW6WK3RYllFYmOHpxjIqhN8Pif_4aS_cqs2YqlD5vnL1VW-iaHLbQtKqBvyEXDrRa/exec", {
+    method: "POST",
+    body: JSON.stringify({
+      formType: "demo",   // 🔹 yeh add karna hai
+      studentName,
+      studentClass,
+      subject,
+      phone,
+      city,
+      schoolName,
+      boardName
+    }),
+  });
+};
+  const handleTutorSubmit = async (e) => {
+  e.preventDefault();
 
-  try {
-    const response = await fetch("https://script.google.com/macros/s/AKfycbyoW6WK3RYllFYmOHpxjIqhN8Pif_4aS_cqs2YqlD5vnL1VW-iaHLbQtKqBvyEXDrRa/exec", {
-      method: "POST",
-      mode: "no-cors",   // 👈 important for bypass CORS
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(formData),
-    });
-
+  await fetch("https://script.google.com/macros/s/AKfycbyoW6WK3RYllFYmOHpxjIqhN8Pif_4aS_cqs2YqlD5vnL1VW-iaHLbQtKqBvyEXDrRa/exec", {
+    method: "POST",
+    body: JSON.stringify({
+      formType: "tutor",   // 🔹 yeh add karna hai
+      fullName,
+      gender,
+      dob,
+      contact,
+      email,
+      address,
+      education,
+      yearOfPassing,
+      experience,
+      classes,
+      timing,
+      idProofType,
+      idProofNumber
+    }),
+  });
+};
     alert("Form submitted successfully!");
   } catch (error) {
     console.error("Error submitting form:", error);
