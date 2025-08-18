@@ -27,7 +27,7 @@ const [boardName, setBoardName] = useState("");
     phone,
     city,
     schoolName,
-    boardname
+    boardName
   };
 
   try {
