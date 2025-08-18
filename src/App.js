@@ -30,7 +30,7 @@ function App() {
     };
 
 try {
-  const response = await fetch("https://script.google.com/macros/s/AKfycbyoW6WK3RYllFYmOHpxjIqhN8Pif_4aS_cqs2YqlD5vnL1VW-iaHLbQtKqBvyEXDrRa/exec", {
+  const response = await fetch("", {
     method: "POST",
     mode: "cors",
     headers: {
