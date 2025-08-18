@@ -154,6 +154,184 @@ const [boardName, setBoardName] = useState("");
         </section>
       )}
 
+      {showTutorForm && (
+  <section className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 px-4">
+    <div
+      className={`bg-white rounded-xl shadow-xl w-full max-w-xl p-6 ${
+        window.innerWidth < 768 ? "mt-0" : "mt-auto mb-10"
+      }`}
+    >
+      <h2 className="text-3xl font-bold text-center text-gray-800 mb-6">
+        Apply as a Tutor
+      </h2>
+
+      <form
+        onSubmit={handleTutorSubmit}
+        className="space-y-4 max-h-[80vh] overflow-y-auto px-2"
+      >
+        <input
+          type="text"
+          name="name"
+          placeholder="Full Name"
+          value={tutorData.name}
+          onChange={handleTutorChange}
+          required
+          className="w-full border border-gray-300 rounded-lg p-3"
+        />
+        <select
+          name="gender"
+          value={tutorData.gender}
+          onChange={handleTutorChange}
+          required
+          className="w-full border border-gray-300 rounded-lg p-3"
+        >
+          <option value="">Select Gender</option>
+          <option>Male</option>
+          <option>Female</option>
+          <option>Other</option>
+        </select>
+        <input
+          type="date"
+          name="dob"
+          value={tutorData.dob}
+          onChange={handleTutorChange}
+          required
+          className="w-full border border-gray-300 rounded-lg p-3"
+        />
+        <input
+          type="file"
+          name="photo"
+          accept="image/*"
+          onChange={handleTutorChange}
+          className="w-full border border-gray-300 rounded-lg p-3"
+        />
+        <input
+          type="tel"
+          name="contact"
+          placeholder="Contact Number"
+          value={tutorData.contact}
+          onChange={handleTutorChange}
+          required
+          className="w-full border border-gray-300 rounded-lg p-3"
+        />
+        <input
+          type="email"
+          name="email"
+          placeholder="Email ID"
+          value={tutorData.email}
+          onChange={handleTutorChange}
+          required
+          className="w-full border border-gray-300 rounded-lg p-3"
+        />
+        <textarea
+          name="address"
+          placeholder="Full Address"
+          value={tutorData.address}
+          onChange={handleTutorChange}
+          required
+          className="w-full border border-gray-300 rounded-lg p-3"
+        />
+        <input
+          type="text"
+          name="education"
+          placeholder="Highest Education"
+          value={tutorData.education}
+          onChange={handleTutorChange}
+          required
+          className="w-full border border-gray-300 rounded-lg p-3"
+        />
+        <input
+          type="text"
+          name="year"
+          placeholder="Year of Passing"
+          value={tutorData.year}
+          onChange={handleTutorChange}
+          required
+          className="w-full border border-gray-300 rounded-lg p-3"
+        />
+        <input
+          type="text"
+          name="experience"
+          placeholder="Teaching Experience (in years)"
+          value={tutorData.experience}
+          onChange={handleTutorChange}
+          className="w-full border border-gray-300 rounded-lg p-3"
+        />
+        <input
+          type="text"
+          name="classes"
+          placeholder="Classes You Can Teach"
+          value={tutorData.classes}
+          onChange={handleTutorChange}
+          required
+          className="w-full border border-gray-300 rounded-lg p-3"
+        />
+        <input
+          type="text"
+          name="timing"
+          placeholder="Preferred Timing"
+          value={tutorData.timing}
+          onChange={handleTutorChange}
+          className="w-full border border-gray-300 rounded-lg p-3"
+        />
+
+        <select
+          name="idProof"
+          value={tutorData.idProof}
+          onChange={(e) => {
+            setSelectedIdProof(e.target.value);
+            handleTutorChange(e);
+          }}
+          required
+          className="w-full border border-gray-300 rounded-lg p-3"
+        >
+          <option value="">Select ID Proof</option>
+          <option>Aadhar Card</option>
+          <option>PAN Card</option>
+          <option>Driving Licence</option>
+        </select>
+
+        {selectedIdProof && (
+          <input
+            type="text"
+            name="idNumber"
+            placeholder={`Enter your ${selectedIdProof} Number`}
+            value={tutorData.idNumber}
+            onChange={handleTutorChange}
+            required
+            className="w-full border border-gray-300 rounded-lg p-3"
+          />
+        )}
+
+        <div className="text-sm text-gray-600 space-y-2">
+          <label className="block">
+            <input type="checkbox" required className="mr-2" /> I confirm all the
+            details are true
+          </label>
+          <label className="block">
+            <input type="checkbox" required className="mr-2" /> I agree to follow
+            all given guidelines
+          </label>
+        </div>
+        <button
+          type="submit"
+          className="w-full bg-green-600 text-white p-3 rounded-lg hover:bg-green-700 transition"
+        >
+          Submit Application
+        </button>
+        <button
+          type="button"
+          onClick={() => setShowTutorForm(false)}
+          className="w-full mt-2 bg-gray-300 text-gray-800 p-2 rounded-lg hover:bg-gray-400 transition"
+        >
+          Cancel
+        </button>
+      </form>
+    </div>
+  </section>
+)}
+
+
       {/* Footer */}
       <footer className="bg-gray-100 py-6 mt-10 shadow-inner">
         <h2 className="text-center text-gray-800 text-lg font-bold">Connect With Us</h2>
