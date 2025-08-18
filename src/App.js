@@ -46,7 +46,7 @@ const handleSubmit = async (e) => {
   };
 
   try {
-    await fetch(GAS_URL, {
+    await fetch("https://script.google.com/macros/s/AKfycbyoW6WK3RYllFYmOHpxjIqhN8Pif_4aS_cqs2YqlD5vnL1VW-iaHLbQtKqBvyEXDrRa/exec", {
       method: "POST",
       mode: "no-cors",
       headers: { "Content-Type": "application/json" },
@@ -84,7 +84,7 @@ const handleTutorSubmit = async (e) => {
   };
 
   try {
-    await fetch(GAS_URL, {
+    await fetch("https://script.google.com/macros/s/AKfycbyoW6WK3RYllFYmOHpxjIqhN8Pif_4aS_cqs2YqlD5vnL1VW-iaHLbQtKqBvyEXDrRa/exec", {
       method: "POST",
       mode: "no-cors",
       headers: { "Content-Type": "application/json" },
