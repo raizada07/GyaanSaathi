@@ -16,53 +16,97 @@ function App() {
   const [schoolName, setSchoolName] = useState("");
 const [boardName, setBoardName] = useState("");
   const [formSubmitted, setFormSubmitted] = useState(false);
+  // Tutor form states
+const [fullName, setFullName] = useState("");
+const [gender, setGender] = useState("");
+const [dob, setDob] = useState("");
+const [contact, setContact] = useState("");
+const [email, setEmail] = useState("");
+const [address, setAddress] = useState("");
+const [education, setEducation] = useState("");
+const [yearOfPassing, setYearOfPassing] = useState("");
+const [experience, setExperience] = useState("");
+const [classesTeach, setClassesTeach] = useState("");
+const [timing, setTiming] = useState("");
+const [idProofType, setIdProofType] = useState("");
+const [idProofNumber, setIdProofNumber] = useState("");
+const [tutorSubmitted, setTutorSubmitted] = useState(false);
 
-  const handleSubmit = async (e) => {
+const handleSubmit = async (e) => {
   e.preventDefault();
+  const formData = {
+    formType: "demo",           // 👈 जरूरी
+    studentName,
+    studentClass,
+    subject,
+    phone,
+    city,
+    schoolName,
+    boardName,
+  };
 
- await fetch("https://script.google.com/macros/s/AKfycbyoW6WK3RYllFYmOHpxjIqhN8Pif_4aS_cqs2YqlD5vnL1VW-iaHLbQtKqBvyEXDrRa/exec", {
-    method: "POST",
-    body: JSON.stringify({
-      formType: "demo",   // 🔹 yeh add karna hai
-      studentName,
-      studentClass,
-      subject,
-      phone,
-      city,
-      schoolName,
-      boardName
-    }),
-  });
-};
-  const handleTutorSubmit = async (e) => {
-  e.preventDefault();
+  try {
+    await fetch(GAS_URL, {
+      method: "POST",
+      mode: "no-cors",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(formData),
+    });
 
-  await fetch("https://script.google.com/macros/s/AKfycbyoW6WK3RYllFYmOHpxjIqhN8Pif_4aS_cqs2YqlD5vnL1VW-iaHLbQtKqBvyEXDrRa/exec", {
-    method: "POST",
-    body: JSON.stringify({
-      formType: "tutor",   // 🔹 yeh add karna hai
-      fullName,
-      gender,
-      dob,
-      contact,
-      email,
-      address,
-      education,
-      yearOfPassing,
-      experience,
-      classes,
-      timing,
-      idProofType,
-      idProofNumber
-    }),
-  });
-};
-    alert("Form submitted successfully!");
-  } catch (error) {
-    console.error("Error submitting form:", error);
-    alert("Error occurred. Try again.");
+    // reset + success
+    setStudentName(""); setStudentClass(""); setSubject("");
+    setPhone(""); setCity(""); setSchoolName(""); setBoardName("");
+    setFormSubmitted(true);
+    alert("Demo request submitted ✅");
+  } catch (err) {
+    console.error(err);
+    alert("Submission failed. Please try again.");
   }
 };
+const handleTutorSubmit = async (e) => {
+  e.preventDefault();
+
+  const payload = {
+    formType: "tutor",       // 👈 जरूरी
+    fullName,
+    gender,
+    dob,
+    contact,
+    email,
+    address,
+    education,
+    yearOfPassing,
+    experience,
+    classes: classesTeach,   // Apps Script में "classes" नाम से जा रहा
+    timing,
+    idProofType,
+    idProofNumber,
+  };
+
+  try {
+    await fetch(GAS_URL, {
+      method: "POST",
+      mode: "no-cors",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(payload),
+    });
+
+    // reset + success
+    setFullName(""); setGender(""); setDob("");
+    setContact(""); setEmail(""); setAddress("");
+    setEducation(""); setYearOfPassing(""); setExperience("");
+    setClassesTeach(""); setTiming("");
+    setIdProofType(""); setIdProofNumber("");
+    setTutorSubmitted(true);
+    alert("Tutor application submitted ✅");
+    setShowTutorForm(false);
+  } catch (err) {
+    console.error(err);
+    alert("Submission failed. Please try again.");
+  }
+};
+
+ 
   const handleBookDemo = (className = "") => {
     setSelectedClass(className);
     setShowForm(true);
@@ -171,182 +215,55 @@ const [boardName, setBoardName] = useState("");
         </section>
       )}
 
-      {showTutorForm && (
+     {showTutorForm && (
   <section className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 px-4">
-    <div
-      className={`bg-white rounded-xl shadow-xl w-full max-w-xl p-6 ${
-        window.innerWidth < 768 ? "mt-0" : "mt-auto mb-10"
-      }`}
-    >
-      <h2 className="text-3xl font-bold text-center text-gray-800 mb-6">
-        Apply as a Tutor
-      </h2>
+    <div className="bg-white rounded-xl shadow-xl w-full max-w-2xl p-6 max-h-[85vh] overflow-y-auto">
+      <h2 className="text-2xl font-bold text-gray-800 mb-4">Apply as a Tutor</h2>
 
-      <form
-        onSubmit={handleTutorSubmit}
-        className="space-y-4 max-h-[80vh] overflow-y-auto px-2"
-      >
-        <input
-          type="text"
-          name="name"
-          placeholder="Full Name"
-          value={tutorData.name}
-          onChange={handleTutorChange}
-          required
-          className="w-full border border-gray-300 rounded-lg p-3"
-        />
-        <select
-          name="gender"
-          value={tutorData.gender}
-          onChange={handleTutorChange}
-          required
-          className="w-full border border-gray-300 rounded-lg p-3"
-        >
-          <option value="">Select Gender</option>
-          <option>Male</option>
-          <option>Female</option>
-          <option>Other</option>
-        </select>
-        <input
-          type="date"
-          name="dob"
-          value={tutorData.dob}
-          onChange={handleTutorChange}
-          required
-          className="w-full border border-gray-300 rounded-lg p-3"
-        />
-        <input
-          type="file"
-          name="photo"
-          accept="image/*"
-          onChange={handleTutorChange}
-          className="w-full border border-gray-300 rounded-lg p-3"
-        />
-        <input
-          type="tel"
-          name="contact"
-          placeholder="Contact Number"
-          value={tutorData.contact}
-          onChange={handleTutorChange}
-          required
-          className="w-full border border-gray-300 rounded-lg p-3"
-        />
-        <input
-          type="email"
-          name="email"
-          placeholder="Email ID"
-          value={tutorData.email}
-          onChange={handleTutorChange}
-          required
-          className="w-full border border-gray-300 rounded-lg p-3"
-        />
-        <textarea
-          name="address"
-          placeholder="Full Address"
-          value={tutorData.address}
-          onChange={handleTutorChange}
-          required
-          className="w-full border border-gray-300 rounded-lg p-3"
-        />
-        <input
-          type="text"
-          name="education"
-          placeholder="Highest Education"
-          value={tutorData.education}
-          onChange={handleTutorChange}
-          required
-          className="w-full border border-gray-300 rounded-lg p-3"
-        />
-        <input
-          type="text"
-          name="year"
-          placeholder="Year of Passing"
-          value={tutorData.year}
-          onChange={handleTutorChange}
-          required
-          className="w-full border border-gray-300 rounded-lg p-3"
-        />
-        <input
-          type="text"
-          name="experience"
-          placeholder="Teaching Experience (in years)"
-          value={tutorData.experience}
-          onChange={handleTutorChange}
-          className="w-full border border-gray-300 rounded-lg p-3"
-        />
-        <input
-          type="text"
-          name="classes"
-          placeholder="Classes You Can Teach"
-          value={tutorData.classes}
-          onChange={handleTutorChange}
-          required
-          className="w-full border border-gray-300 rounded-lg p-3"
-        />
-        <input
-          type="text"
-          name="timing"
-          placeholder="Preferred Timing"
-          value={tutorData.timing}
-          onChange={handleTutorChange}
-          className="w-full border border-gray-300 rounded-lg p-3"
-        />
-
-        <select
-          name="idProof"
-          value={tutorData.idProof}
-          onChange={(e) => {
-            setSelectedIdProof(e.target.value);
-            handleTutorChange(e);
-          }}
-          required
-          className="w-full border border-gray-300 rounded-lg p-3"
-        >
-          <option value="">Select ID Proof</option>
-          <option>Aadhar Card</option>
-          <option>PAN Card</option>
-          <option>Driving Licence</option>
-        </select>
-
-        {selectedIdProof && (
-          <input
-            type="text"
-            name="idNumber"
-            placeholder={`Enter your ${selectedIdProof} Number`}
-            value={tutorData.idNumber}
-            onChange={handleTutorChange}
-            required
-            className="w-full border border-gray-300 rounded-lg p-3"
-          />
-        )}
-
-        <div className="text-sm text-gray-600 space-y-2">
-          <label className="block">
-            <input type="checkbox" required className="mr-2" /> I confirm all the
-            details are true
-          </label>
-          <label className="block">
-            <input type="checkbox" required className="mr-2" /> I agree to follow
-            all given guidelines
-          </label>
+      {tutorSubmitted && (
+        <div className="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded mb-4 text-center font-semibold">
+          🎉 Your application has been submitted.
         </div>
-        <button
-          type="submit"
-          className="w-full bg-green-600 text-white p-3 rounded-lg hover:bg-green-700 transition"
-        >
-          Submit Application
-        </button>
-        <button
-          type="button"
-          onClick={() => setShowTutorForm(false)}
-          className="w-full mt-2 bg-gray-300 text-gray-800 p-2 rounded-lg hover:bg-gray-400 transition"
-        >
-          Cancel
-        </button>
+      )}
+
+      <form onSubmit={handleTutorSubmit} className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <input className="border p-3 rounded-lg" placeholder="Full Name" value={fullName} onChange={e=>setFullName(e.target.value)} required />
+        
+        <select className="border p-3 rounded-lg" value={gender} onChange={e=>setGender(e.target.value)} required>
+          <option value="">Select Gender</option>
+          <option>Male</option><option>Female</option><option>Other</option>
+        </select>
+
+        <input type="date" className="border p-3 rounded-lg" value={dob} onChange={e=>setDob(e.target.value)} required />
+        <input type="tel" className="border p-3 rounded-lg" placeholder="Contact Number" value={contact} onChange={e=>setContact(e.target.value)} required />
+        <input type="email" className="border p-3 rounded-lg" placeholder="Email" value={email} onChange={e=>setEmail(e.target.value)} required />
+
+        <textarea className="border p-3 rounded-lg md:col-span-2" placeholder="Full Address" value={address} onChange={e=>setAddress(e.target.value)} required />
+
+        <input className="border p-3 rounded-lg" placeholder="Highest Education" value={education} onChange={e=>setEducation(e.target.value)} required />
+        <input className="border p-3 rounded-lg" placeholder="Year of Passing" value={yearOfPassing} onChange={e=>setYearOfPassing(e.target.value)} required />
+        <input className="border p-3 rounded-lg" placeholder="Experience (years)" value={experience} onChange={e=>setExperience(e.target.value)} />
+        <input className="border p-3 rounded-lg" placeholder="Classes You Can Teach" value={classesTeach} onChange={e=>setClassesTeach(e.target.value)} required />
+        <input className="border p-3 rounded-lg" placeholder="Preferred Timing" value={timing} onChange={e=>setTiming(e.target.value)} />
+
+        <select className="border p-3 rounded-lg" value={idProofType} onChange={e=>setIdProofType(e.target.value)} required>
+          <option value="">Select ID Proof</option>
+          <option value="Aadhar Card">Aadhar Card</option>
+          <option value="PAN Card">PAN Card</option>
+          <option value="Driving Licence">Driving Licence</option>
+        </select>
+
+        <input className="border p-3 rounded-lg" placeholder={idProofType ? `Enter ${idProofType} Number` : "Enter ID Proof Number"} value={idProofNumber} onChange={e=>setIdProofNumber(e.target.value)} required />
+
+        <div className="md:col-span-2 flex gap-2">
+          <button type="submit" className="flex-1 bg-green-600 text-white p-3 rounded-lg hover:bg-green-700 transition">Submit Application</button>
+          <button type="button" onClick={()=>setShowTutorForm(false)} className="flex-1 bg-gray-300 text-gray-800 p-3 rounded-lg hover:bg-gray-400 transition">Cancel</button>
+        </div>
       </form>
     </div>
   </section>
 )}
+
 
 
       {/* Footer */}
