@@ -18,47 +18,34 @@ function App() {
   const [formSubmitted, setFormSubmitted] = useState(false);
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
-    const data = {
-      name: studentName,
-      studentClass: studentClass,
-      subject: subject,
-      phone: phone,
-      city: city,
-      school: schoolName,
-      board: boardName,
-    };
+  e.preventDefault();
 
-try {
-  const response = await fetch("https://script.google.com/macros/s/AKfycbyoW6WK3RYllFYmOHpxjIqhN8Pif_4aS_cqs2YqlD5vnL1VW-iaHLbQtKqBvyEXDrRa/exechttps://script.google.com/macros/s/AKfycbyoW6WK3RYllFYmOHpxjIqhN8Pif_4aS_cqs2YqlD5vnL1VW-iaHLbQtKqBvyEXDrRa/exec", {
-    method: "POST",
-    mode: "cors",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(data),
-  });
-
-  if (response.ok) {
-    // Clear all fields after successful submission
-    setStudentName("");
-    setStudentClass("");
-    setSubject("");
-    setPhone("");
-    setCity("");
-    setSchoolName("");
-    setBoardName("");
-    setFormSubmitted(true);
-
-    alert("Form submitted successfully ✅");
-  } else {
-    alert("Failed to submit. Try again.");
-  }
-} catch (error) {
-  console.error("Error submitting form:", error);
-  alert("Error occurred. Try again.");
-}
+  const formData = {
+    name,
+    studentClass,
+    subject,
+    phone,
+    city,
+    school,
+    board
   };
+
+  try {
+    const response = await fetch("https://script.google.com/macros/s/AKfycbyoW6WK3RYllFYmOHpxjIqhN8Pif_4aS_cqs2YqlD5vnL1VW-iaHLbQtKqBvyEXDrRa/exec", {
+      method: "POST",
+      mode: "no-cors",   // 👈 important for bypass CORS
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(formData),
+    });
+
+    alert("Form submitted successfully!");
+  } catch (error) {
+    console.error("Error submitting form:", error);
+    alert("Error occurred. Try again.");
+  }
+};
   const handleBookDemo = (className = "") => {
     setSelectedClass(className);
     setShowForm(true);
