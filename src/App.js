@@ -13,15 +13,15 @@ function App() {
   const [subject, setSubject] = useState("");
   const [phone, setPhone] = useState("");
   const [city, setCity] = useState("");
-  const [schoolName, setSchoolName] = useState("");
-  const [boardName, setBoardName] = useState("");
+  const [school, setSchool] = useState("");
+  const [board, setBoard] = useState("");
   const [formSubmitted, setFormSubmitted] = useState(false);
 
   const handleSubmit = async (e) => {
   e.preventDefault();
 
   const formData = {
-    name,
+    studentName,
     studentClass,
     subject,
     phone,
