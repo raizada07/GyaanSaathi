@@ -196,7 +196,7 @@ const handleTutorSubmit = async (e) => {
 
               <input type="text" placeholder="Subject" value={subject} onChange={(e) => setSubject(e.target.value)} className="w-full border p-3 rounded-lg" required />
               <input type="tel" placeholder="Phone Number" value={phone} onChange={(e) => setPhone(e.target.value)} className="w-full border p-3 rounded-lg" required />
-              <input type="text" placeholder="City" value={Location} onChange={(e) => setCity(e.target.value)} className="w-full border p-3 rounded-lg" required />
+              <input type="text" placeholder="Location" value={city} onChange={(e) => setCity(e.target.value)} className="w-full border p-3 rounded-lg" required />
               <input type="text" placeholder="School Name" value={schoolName} onChange={(e) => setSchoolName(e.target.value)} className="w-full border p-3 rounded-lg" />
               
               <select value={boardName} onChange={(e) => setBoardName(e.target.value)} className="w-full border p-3 rounded-lg" required>
