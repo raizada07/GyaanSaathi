@@ -4,6 +4,7 @@ import logo from "./assets/logo.png";
 function App() {
   const [showForm, setShowForm] = useState(false);
   const [showTutorForm, setShowTutorForm] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const [selectedClass, setSelectedClass] = useState(""); 
   const [selectedIdProof, setSelectedIdProof] = useState("");
@@ -34,8 +35,10 @@ const [tutorSubmitted, setTutorSubmitted] = useState(false);
 
 const handleSubmit = async (e) => {
   e.preventDefault();
+  setLoading(true);
+
   const formData = {
-    formType: "demo",           
+    formType: "demo",
     studentName,
     studentClass,
     subject,
@@ -53,16 +56,20 @@ const handleSubmit = async (e) => {
       body: JSON.stringify(formData),
     });
 
-    // reset + success
+    alert("Demo request submitted ✅");
+    // Reset fields
     setStudentName(""); setStudentClass(""); setSubject("");
     setPhone(""); setCity(""); setSchoolName(""); setBoardName("");
     setFormSubmitted(true);
-    alert("Demo request submitted ✅");
+    setShowForm(false); // Modal close
   } catch (err) {
     console.error(err);
     alert("Submission failed. Please try again.");
+  } finally {
+    setLoading(false);
   }
 };
+
 const handleTutorSubmit = async (e) => {
   e.preventDefault();
 
