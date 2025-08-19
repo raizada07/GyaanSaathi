@@ -1,38 +1,43 @@
-.App {
+/* 🌐 GyaanSaathi Professional Theme */
+body {
+  font-family: 'Poppins', sans-serif;
+  background: #f9fafb;
+  margin: 0;
+  padding: 0;
+  line-height: 1.6;
+  color: #1f2937;
+}
+
+header, footer {
+  background: #1e293b;
+  color: #facc15;
+  padding: 1rem;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+nav a {
+  color: #f1f5f9;
+  margin: 0 15px;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+nav a:hover {
+  color: #38bdf8;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+section {
+  padding: 3rem 2rem;
 }
 
-.App-header {
-  background-color: #ADD8E6;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+button {
+  background: #2563eb;
   color: white;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  border: none;
+  cursor: pointer;
+  transition: background 0.3s ease;
 }
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+button:hover {
+  background: #1d4ed8;
 }
