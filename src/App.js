@@ -233,7 +233,7 @@ const handleTutorSubmit = async (e) => {
           <option>Male</option><option>Female</option><option>Other</option>
         </select>
 
-        <input type="date" className="border p-3 rounded-lg" value={dob} onChange={e=>setDob(e.target.value)} required />
+        <input type="date" className="border p-3 rounded-lg" placeholder="Date of Birth" value={dob} onChange={e=>setDob(e.target.value)} required />
         <input type="tel" className="border p-3 rounded-lg" placeholder="Contact Number" value={contact} onChange={e=>setContact(e.target.value)} required />
         <input type="email" className="border p-3 rounded-lg" placeholder="Email" value={email} onChange={e=>setEmail(e.target.value)} required />
 
