@@ -116,7 +116,7 @@ const handleTutorSubmit = async (e) => {
   return (
     <div className="font-sans overflow-x-hidden">
       {/* Navbar */}
-      <nav className="bg-white shadow-md p-4 flex justify-center items-center">
+      <nav className="bg-gradient-to-r from-blue-600 to-indigo-700 shadow-lg p-4 flex justify-center items-center text-white">
         <div className="flex items-center gap-2">
           <img src={logo} alt="GyaanSaathi Logo" className="w-20 sm:w-24 md:w-32 h-auto" />
           <h1 className="text-center text-lg sm:text-xl md:text-2xl font-bold text-blue-600">
@@ -126,7 +126,7 @@ const handleTutorSubmit = async (e) => {
       </nav>
 
       {/* Hero */}
-      <section className="text-center py-16 px-4 bg-blue-50">
+      <section className="text-center py-20 px-6 bg-gradient-to-r from-blue-50 via-white to-blue-50">
         <h2 className="text-4xl font-extrabold text-gray-800">
           Find The Perfect Home Tutor for Your Child
         </h2>
@@ -136,7 +136,8 @@ const handleTutorSubmit = async (e) => {
 
         <button
           onClick={() => handleBookDemo("")}
-          className="bg-blue-600 text-white px-4 py-2 rounded-xl hover:bg-blue-700 transition"
+        className="bg-blue-600 text-white px-6 py-3 rounded-full shadow-lg hover:scale-105 hover:bg-blue-700 transition transform"
+
         >
           Book Free Demo Class
         </button>
@@ -276,7 +277,7 @@ const handleTutorSubmit = async (e) => {
 
 
       {/* Footer */}
-      <footer className="bg-gray-100 py-6 mt-10 shadow-inner">
+      <footer className="bg-gray-900 text-gray-300 py-10 mt-10">
         <h2 className="text-center text-gray-800 text-lg font-bold">Connect With Us</h2>
         <div className="flex justify-center gap-6 mt-4 text-blue-700 font-medium">
           <a href="https://www.facebook.com/gyaansaathihometutor" target="_blank" rel="noopener noreferrer">📘 Facebook</a>
